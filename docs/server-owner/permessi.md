@@ -1,32 +1,48 @@
 ---
-sidebar_label: Permessi
+sidebar_label: Permissions
 ---
 
-# Permessi
+# Permissions
 
-I permessi di gioco sono **nodi** stringa, come `police.arrest`: lettere minuscole, cifre e `_`, separati da punti, fino a 128 caratteri. Un *pattern* può finire con `.*` (`police.*`) oppure essere `*` da solo.
+Questa pagina descrive come funzionano le Permissions di gioco e come assegnarle. È rivolta ai server owner. Disponibile dalla 0.2.
 
-## Da dove arrivano
+## Overview
 
-- **Dal lavoro:** i nodi del grade (e dei grade inferiori) valgono solo mentre il personaggio è in servizio.
-- **Override per personaggio:** un operatore può concedere (`grant`) o negare (`deny`) un nodo a un singolo personaggio, anche con pattern.
+Una Permission è un **nodo**, una stringa come `police.arrest`, valutata per Character. Il nodo ha la forma `[a-z0-9_]+` separato da punti, fino a 128 caratteri. Un *pattern* può finire con `.*` (`police.*`) oppure essere `*` da solo.
 
-## Come si risolvono
+Le Permissions dello staff sono un sistema separato, per account e non per Character: vedi [Pannello staff](pannello-staff.md).
 
-- L'override più specifico vince.
-- A parità di specificità vince `deny`.
-- Un override batte sempre i nodi del lavoro.
+## How it works
 
-## Comandi
+Un Character ottiene una Permission da due sorgenti:
+
+- **dal Job:** i nodi del Grade, e dei Grades inferiori, valgono solo mentre il Character è in servizio;
+- **da un override:** un operatore può concedere (`grant`) o negare (`deny`) un nodo a un singolo Character, anche con pattern.
+
+Regole di risoluzione:
+
+- l'override più specifico vince;
+- a parità di specificità vince `deny`;
+- un override batte sempre i nodi del Job.
+
+## Usage
 
 | Comando | Cosa fa |
 | --- | --- |
-| `/perm grant <giocatore> <nodo>` | Concede il nodo al personaggio attivo. |
-| `/perm deny <giocatore> <nodo>` | Nega il nodo. |
-| `/perm clear <giocatore> <nodo>` | Rimuove l'override. |
+| `/perm grant <player> <node>` | Concede il nodo al Character attivo. |
+| `/perm deny <player> <node>` | Nega il nodo. |
+| `/perm clear <player> <node>` | Rimuove l'override. |
 
-Il nodo può contenere il jolly: `police.*`. Solo per operatori. Resta valida anche la forma `/qrm admin perm …`.
+`<node>` può contenere il jolly (`police.*`). I comandi sono solo per operatori. Resta valida anche la forma `/qrm admin perm …`.
 
-## Permessi dello staff
+## Limitations
 
-I permessi del [pannello staff](pannello-staff.md) sono un sistema separato: sono per **account**, non per personaggio, e usano nodi `staff.*`.
+- Non esiste un nodo "consentito a tutti per impostazione predefinita": un Module che lo vuole controlla l'assenza di un `DENY`, come fa la banca per `bank.atm.use` e `bank.transfer`.
+- Gli override agiscono sul Character attivo del Player.
+
+## Related
+
+- [Jobs](lavori.md)
+- [Organizations](organizzazioni.md)
+- [Nodi di Permission (riferimento)](../riferimento/nodi-permesso.md)
+- [Permissions per sviluppatori](../sviluppatori/servizi/permessi.md)

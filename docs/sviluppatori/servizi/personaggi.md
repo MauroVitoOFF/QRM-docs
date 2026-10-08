@@ -1,49 +1,75 @@
 ---
-sidebar_label: Personaggi
+sidebar_label: Characters
 ---
 
-# Personaggi
+# Characters
 
-Un giocatore (`PlayerId`) ha uno o più personaggi (`PlayerCharacter`) e uno solo è **attivo**. Lavoro, conti, permessi e organizzazioni appartengono al personaggio.
+Questa pagina documenta `CharacterService` e `PlayerService`. È rivolta agli sviluppatori di Modules. Per i comandi lato server vedi [Characters](../../server-owner/personaggi.md).
+
+:::caution Experimental
+API `0.x`: può cambiare tra una minor e l'altra.
+:::
+
+## Overview
+
+Un Player (`PlayerId`) ha uno o più Characters (`PlayerCharacter`) e uno solo è **attivo**. Job, Accounts, Permissions e Organizations appartengono al Character.
 
 ```java
 CharacterService characters = QRM.get(CharacterService.class);
 Optional<PlayerCharacter> pc = characters.activeOf(new PlayerId(player.getUUID()));
 ```
 
-## Il servizio
-
-| Metodo | Cosa fa |
-| --- | --- |
-| `create(PlayerId, firstName, lastName, LocalDate birthDate)` | Crea un personaggio. |
-| `select(PlayerId, CharacterId)` | Lo rende attivo. |
-| `archive(PlayerId, CharacterId)` | Lo archivia; restituisce `boolean`. |
-| `activeOf(PlayerId)` | Il personaggio attivo, se c'è. |
-| `listOf(PlayerId)` | Tutti i personaggi del giocatore. |
-| `find(CharacterId)` | Un personaggio per id. |
-| `findByName(String fullName)` | I personaggi con quel "Nome Cognome" (può essere più di uno se `characters.uniqueNames` è `false`). |
+## How it works
 
 `PlayerCharacter` ha `id`, `playerId`, `firstName`, `lastName`, `birthDate`, `status` (`ACTIVE`, `ARCHIVED`, `DECEASED`) e `createdAt`.
 
-## Esiti
-
-Entrambi sono **sealed**: usa uno `switch` esaustivo.
-
-`CreateCharacterResult`: `Created(character)`, `UnknownPlayer`, `SlotsFull`, `InvalidName(reason)`, `NameTaken`.
-
-`SelectCharacterResult`: `Selected(character)`, `NotFound`, `NotOwner`, `NotUsable(status)`.
-
 I limiti (slot, lunghezza e forma del nome, nomi unici) vengono dalla configurazione del server: vedi [Configurazione](../../server-owner/configurazione.md).
 
-## Giocatori
+`PlayerService` tiene traccia dei Players: `onJoin(PlayerId)` (lo chiama QRM all'ingresso) e `find(PlayerId)`, che restituisce un `QrmPlayer(id, firstSeen, lastSeen, characterSlots)`.
 
-`PlayerService` tiene traccia dei giocatori: `onJoin(PlayerId)` (lo chiama QRM all'ingresso) e `find(PlayerId)`, che restituisce un `QrmPlayer(id, firstSeen, lastSeen, characterSlots)`.
+## API
 
-## Eventi
+| Metodo | Cosa fa |
+| --- | --- |
+| `create(PlayerId, firstName, lastName, LocalDate birthDate)` | Crea un Character. |
+| `select(PlayerId, CharacterId)` | Lo rende attivo. |
+| `archive(PlayerId, CharacterId)` | Lo archivia; restituisce `boolean`. |
+| `activeOf(PlayerId)` | Il Character attivo, se c'è. |
+| `listOf(PlayerId)` | Tutti i Characters del Player. |
+| `find(CharacterId)` | Un Character per id. |
+| `findByName(String fullName)` | I Characters con quel "Nome Cognome" (più d'uno se `characters.uniqueNames` è `false`). |
+
+Gli esiti sono **sealed**: usa uno `switch` esaustivo.
+
+- `CreateCharacterResult`: `Created(character)`, `UnknownPlayer`, `SlotsFull`, `InvalidName(reason)`, `NameTaken`.
+- `SelectCharacterResult`: `Selected(character)`, `NotFound`, `NotOwner`, `NotUsable(status)`.
+
+### Eventi
 
 | Evento | Quando |
 | --- | --- |
 | `CharacterCreatedEvent(character)` | Dopo la creazione. |
 | `CharacterSelectedEvent(character)` | Dopo la selezione. |
 | `CharacterArchivedEvent(character)` | Dopo l'archiviazione. |
-| `PlayerJoinEvent(playerId)`, `PlayerLeaveEvent(playerId)` | Ingresso e uscita di un giocatore. |
+| `PlayerJoinEvent(playerId)`, `PlayerLeaveEvent(playerId)` | Ingresso e uscita di un Player. |
+
+## Examples
+
+Trovare il Character attivo e il suo Account:
+
+```java
+Optional<Account> account = characters.activeOf(new PlayerId(player.getUUID()))
+        .flatMap(pc -> QRM.get(AccountService.class)
+                .accountsOf(OwnerRef.character(pc.id())).stream().findFirst());
+```
+
+## Limitations
+
+- Non esiste un'operazione per riattivare un Character archiviato.
+- Gli eventi di creazione, selezione e archiviazione non sono annullabili.
+
+## Related
+
+- [Economy](economia.md)
+- [Jobs](lavori.md)
+- [Eventi](../eventi.md)

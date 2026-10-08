@@ -4,38 +4,43 @@ sidebar_label: Configurazione
 
 # Configurazione
 
+Questa pagina elenca le chiavi di configurazione di QRM. È rivolta ai server owner. La configurazione della banca è in [Banca e ATM](banca.md).
+
 ## `config/qrm-common.toml`
 
-Si applica al riavvio.
+Le modifiche si applicano al riavvio.
 
 | Chiave | Predefinito | Cosa fa |
 | --- | --- | --- |
 | `database.url` | vuoto | URL JDBC. Vuoto = SQLite in `<world>/qrm/qrm.db`. Oggi è incluso solo il driver SQLite. |
 | `database.user`, `database.password` | vuoto | Credenziali per un database esterno. |
-| `characters.slots` | `3` (1–50) | Slot personaggio per giocatore. |
+| `characters.slots` | `3` (1–50) | Slot Character per Player. |
 | `characters.nameMinLength`, `characters.nameMaxLength` | `2`, `24` (1–64) | Lunghezza di nome e cognome. |
 | `characters.namePattern` | `^[\p{L}][\p{L}' -]*$` | Espressione regolare valida per nome e cognome. |
 | `characters.uniqueNames` | `true` | Rifiuta nomi completi già in uso. |
-| `economy.defaultCurrency` | `QRM` | Valuta usata dai comandi quando non specificata e mostrata nell'HUD. |
-| `jobs.selfDuty` | `true` | I giocatori entrano/escono di servizio da soli (`/duty`, pulsante dell'hub). Se `false` lo cambiano solo i moduli; il logout mette comunque fuori servizio. |
-| `commands.shortAliases` | `true` | Registra le scorciatoie `/job`, `/duty`, `/money` (`/balance`, `/bal`, `/pay`), `/char`, `/org` e `/perm`, oltre ai comandi `/qrm`. Metti `false` se un altro mod usa gli stessi nomi. Si applica al riavvio o con `/reload`. |
+| `economy.defaultCurrency` | `QRM` | Currency usata dai comandi quando non specificata e mostrata nell'HUD. |
+| `jobs.selfDuty` | `true` | I Players entrano ed escono di servizio da soli (`/duty`, pulsante dell'hub). Se `false` lo cambiano solo i Modules; il logout mette comunque fuori servizio. |
+| `commands.shortAliases` | `true` | Registra le forme brevi `/job`, `/duty`, `/money` (`/balance`, `/bal`, `/pay`), `/char`, `/org` e `/perm`, oltre ai comandi `/qrm`. Disponibile dalla 0.11. Metti `false` se un altro mod usa gli stessi nomi. Si applica al riavvio o con `/reload`. |
 | `gui.hub.tabs` | `accounts`, `job`, `orgs` | Schede dell'hub, nell'ordine indicato. Elenco vuoto = hub non disponibile. |
-| `gui.hud.elements` | `name`, `balance`, `job` | Righe dell'HUD nell'ordine indicato; i moduli aggiungono le proprie (es. `bank:debt`). Elenco vuoto = HUD nascosto. |
+| `gui.hud.elements` | `name`, `balance`, `job` | Righe dell'HUD nell'ordine indicato; i Modules aggiungono le proprie (per esempio `bank:debt`). Elenco vuoto = HUD nascosto. |
 
-## Valute
+Le chiavi `jobs.selfDuty`, `gui.hub.tabs` e `gui.hud.elements` sono disponibili dalla 0.5.
 
-Un file per valuta in `<world>/qrm/data/currencies/*.json`:
+## Currencies
 
-```json
-{ "code": "USD", "symbol": "$", "decimals": 2 }
-```
-
-Gli importi sono sempre in unità minime: `1250` con 2 decimali vale 12,50.
-
-## Banca
-
-`config/qrm_bank-server.toml` e `config/qrm_bank/cash.json` sono descritti nella pagina della banca.
+Una Currency si definisce con un file in `<world>/qrm/data/currencies/*.json`. Vedi [Economy](economia.md).
 
 ## Client
 
 `hud.visible` (predefinito `true`) in `config/qrm-client.toml`. L'HUD si attiva e disattiva anche con il tasto **H**.
+
+## Limitations
+
+- `database.url` accetta solo l'URL SQLite predefinito: un database esterno non è disponibile.
+- Le chiavi di `qrm-common.toml` si applicano al riavvio, tranne `commands.shortAliases` che si applica anche con `/reload`.
+
+## Related
+
+- [Installazione](installazione.md)
+- [Banca e ATM](banca.md)
+- [Jobs](lavori.md)

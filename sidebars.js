@@ -4,7 +4,7 @@ module.exports = {
       type: 'category',
       label: 'Introduzione',
       link: { type: 'doc', id: 'intro/index' },
-      items: ['intro/moduli', 'intro/requisiti', 'intro/roadmap'],
+      items: ['intro/moduli', 'intro/requisiti', 'intro/stabilita', 'intro/roadmap'],
     },
     {
       type: 'category',
@@ -14,6 +14,7 @@ module.exports = {
         'server-owner/installazione',
         'server-owner/configurazione',
         'server-owner/personaggi',
+        'server-owner/economia',
         'server-owner/lavori',
         'server-owner/organizzazioni',
         'server-owner/permessi',

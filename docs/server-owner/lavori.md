@@ -1,14 +1,28 @@
 ---
-sidebar_label: Lavori
+sidebar_label: Jobs
 ---
 
-# Lavori
+# Jobs
 
-Un personaggio ha al massimo **un lavoro** con un **grade** e può essere **in servizio** o no. Il personaggio va fuori servizio al logout e quando il giocatore seleziona un altro personaggio.
+Questa pagina descrive come definire i Jobs e come assegnarli ai Characters. È rivolta ai server owner. Disponibile dalla 0.2.
 
-## Definire un lavoro
+## Overview
 
-Un file per lavoro in `<world>/qrm/data/jobs/<id>.json`:
+Un Character ha al massimo **un Job** con un **Grade**, e può essere **in servizio** o no. I Permissions del Job valgono solo in servizio. Un Job è un file JSON oppure è registrato da un Module.
+
+## How it works
+
+- Ogni Grade **eredita** i Permissions dei Grades con `level` inferiore dello stesso Job.
+- Il Character va fuori servizio al logout e quando il Player seleziona un altro Character.
+- Se `jobs.selfDuty` è `false`, solo i Modules cambiano lo stato di servizio.
+- Se un Job sparisce dai file, l'assegnazione resta nel database ma non dà Permissions finché il Job non torna.
+- Un Job può dichiarare `"org": "<id>"` per collegarsi a un'[Organization](organizzazioni.md): chi lo ha, in servizio, è membro implicito.
+
+## Usage
+
+### Definire un Job
+
+Un file per Job in `<world>/qrm/data/jobs/<id>.json`:
 
 ```json
 { "id": "police", "label": "Polizia", "grades": [
@@ -17,22 +31,30 @@ Un file per lavoro in `<world>/qrm/data/jobs/<id>.json`:
   { "id": "chief", "label": "Comandante", "level": 5, "permissions": ["police.*"] } ] }
 ```
 
-- Ogni grade **eredita** i nodi dei grade con `level` inferiore dello stesso lavoro.
-- I nodi del lavoro valgono **solo in servizio**.
-- La valuta di `salary` deve già esistere, altrimenti il file del lavoro viene scartato con un errore nel log.
-- Lo stipendio è solo un dato: il Core non paga, lo fa un modulo.
-- Un lavoro può dichiarare `"org": "<id>"` per collegarsi a un'[organizzazione](organizzazioni.md): chi lo ha, in servizio, è membro implicito.
-- Se un lavoro sparisce dai file, l'assegnazione resta nel database ma non dà permessi finché il lavoro non torna.
+La Currency di `salary` deve già esistere, altrimenti il file del Job viene scartato con un errore nel log.
 
-## Comandi
+### Comandi
 
 | Comando | Chi | Cosa fa |
 | --- | --- | --- |
-| `/job` (o `/job info`) | giocatori | Mostra lavoro e grade del personaggio attivo. |
-| `/duty` | giocatori | Inverte il servizio: entra se è fuori, esce se è dentro. Disponibile se `jobs.selfDuty` è `true`. |
-| `/duty on` / `/duty off` | giocatori | Entra o esce di servizio in modo esplicito. |
-| `/job list` | operatori | Elenca i lavori registrati. |
-| `/job set <giocatore> <job> <grade>` | operatori | Assegna lavoro e grade. Il Tab propone i lavori esistenti e poi i grade del lavoro scelto. |
-| `/job remove <giocatore>` | operatori | Licenzia. |
+| `/job` (o `/job info`) | Players | Mostra Job e Grade del Character attivo. |
+| `/duty` | Players | Inverte il servizio: entra se è fuori, esce se è dentro. Disponibile se `jobs.selfDuty` è `true`. |
+| `/duty on` / `/duty off` | Players | Entra o esce di servizio in modo esplicito. |
+| `/job list` | operatori | Elenca i Jobs registrati. |
+| `/job set <player> <job> <grade>` | operatori | Assegna Job e Grade. Il Tab propone i Jobs esistenti e poi i Grades del Job scelto. |
+| `/job remove <player>` | operatori | Licenzia. |
 
-I sottocomandi per operatori non compaiono agli altri giocatori. Restano validi anche i comandi lunghi: `/qrm job info`, `/qrm duty`, `/qrm admin job list|set|fire`.
+I sottocomandi per operatori non compaiono agli altri Players. Restano validi i comandi lunghi `/qrm job info`, `/qrm duty` e `/qrm admin job list|set|fire`.
+
+## Limitations
+
+- Lo stipendio (`salary`) è solo un dato: il Core non lo paga. Lo fa un Module.
+- Un Character ha un solo Job alla volta.
+- Il pannello staff non ha una schermata per i Jobs: si usano i comandi.
+
+## Related
+
+- [Organizations](organizzazioni.md)
+- [Permissions](permessi.md)
+- [Configurazione](configurazione.md)
+- [Jobs per sviluppatori](../sviluppatori/servizi/lavori.md)

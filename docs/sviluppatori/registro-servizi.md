@@ -4,7 +4,11 @@ sidebar_label: Registro dei servizi
 
 # Registro dei servizi
 
-Tutto passa da `dev.qrm.api.QRM`, un registro statico di servizi indicizzati per tipo.
+Questa pagina descrive `dev.qrm.api.QRM`, il punto da cui un Module ottiene i servizi dell'API, e spiega quando ogni servizio è disponibile. È rivolta agli sviluppatori di Modules.
+
+## Overview
+
+`QRM` è un registro statico di servizi indicizzati per tipo.
 
 ```java
 AccountService accounts = QRM.get(AccountService.class);
@@ -13,14 +17,20 @@ EventBus bus = QRM.events();   // scorciatoia per QRM.get(EventBus.class)
 
 `QRM.get(...)` lancia `IllegalStateException` se il servizio non è disponibile: il messaggio ricorda di aspettare `QrmReadyEvent`.
 
-## Quando i servizi sono disponibili
+## How it works
+
+Alcuni servizi esistono prima del server, gli altri nascono quando il Core apre il database.
 
 | Servizio | Disponibile |
 | --- | --- |
 | `EventBus`, `CurrencyRegistry`, `JobRegistry` | Già nel costruttore del tuo mod (li registra il costruttore del mod QRM). |
-| `PlayerService`, `CharacterService`, `AccountService`, `TransactionService`, `AuditService`, `ModDataService`, `JobService`, `PermissionService`, `OrganizationService`, `OrganizationBankService`, `StaffAccessService` | All'avvio del server, quando il Core apre il database e registra i servizi. Subito dopo viene pubblicato `QrmReadyEvent`. |
+| `PlayerService`, `CharacterService`, `AccountService`, `TransactionService`, `AuditService`, `ModDataService`, `JobService`, `PermissionService`, `OrganizationService`, `OrganizationBankService`, `StaffAccessService` | All'avvio del server, quando il Core registra i servizi. Subito dopo viene pubblicato `QrmReadyEvent`. |
 
-Chiamare uno di questi servizi prima dell'avvio del server lancia `IllegalStateException`. Il modo più semplice è partire da `QrmReadyEvent`:
+Chiamare uno di questi servizi prima dell'avvio del server lancia `IllegalStateException`.
+
+## Usage
+
+Il modo più semplice di usare i servizi del Core è partire da `QrmReadyEvent`:
 
 ```java
 QRM.events().register(QrmReadyEvent.class, "mymod", e -> {
@@ -29,10 +39,16 @@ QRM.events().register(QrmReadyEvent.class, "mymod", e -> {
 });
 ```
 
-## Registrare un servizio proprio
+### Registrare un servizio proprio
 
-`QRM.register(Class<T>, T)` aggiunge un servizio al registro e lancia `IllegalStateException` se quel tipo è già registrato. Serve a chi fornisce un servizio ad altri moduli. `QRM.unregister(Class)` e `QRM.clear()` esistono soprattutto per i test.
+`QRM.register(Class<T>, T)` aggiunge un servizio al registro e lancia `IllegalStateException` se quel tipo è già registrato. Serve a un Module che fornisce un servizio ad altri Modules. `QRM.unregister(Class)` e `QRM.clear()` esistono soprattutto per i test.
 
-## Errori del database
+## Limitations
 
-Gli errori del database emergono come `RuntimeException`.
+- Gli errori del database emergono come `RuntimeException`.
+- Il registro non gestisce versioni dei servizi: un tipo è registrato una volta sola.
+
+## Related
+
+- [Quickstart](quickstart.md)
+- [Eventi](eventi.md)

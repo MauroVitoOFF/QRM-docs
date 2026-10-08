@@ -4,13 +4,19 @@ sidebar_label: Tema della GUI
 
 # Contratto del tema della GUI
 
-Questa pagina è per chi crea uno stile grafico (un resource pack) per un server QRM, o per chi scrive un modulo che disegna con il tema.
+Questa pagina è il contratto del manifesto del tema. È rivolta a chi crea uno stile grafico (un resource pack) per un server QRM e a chi scrive un Module che disegna con il tema. Disponibile dalla 0.4.
 
-La GUI di QRM non contiene asset nel codice: colori, misure e texture arrivano da un **manifesto JSON** e da file PNG che un resource pack può sostituire senza toccare il mod. Il codice legge solo le chiavi elencate qui sotto. Cambiare l'arte non richiede di ricompilare nulla.
+:::caution Experimental
+Le chiavi del tema di QRM fanno parte dell'API e non vengono rinominate senza cambiare versione maggiore, ma l'insieme di chiavi può crescere tra una minor e l'altra.
+:::
+
+## Overview
+
+La GUI di QRM non contiene asset nel codice: colori, misure e texture arrivano da un **manifesto JSON** e da file PNG che un resource pack può sostituire senza toccare il mod. Il codice legge solo le chiavi elencate qui sotto.
 
 Come un server distribuisce un tema (resource pack del server o locale, `F3+T`) è spiegato in [Temi](../server-owner/temi.md), insieme alla **tabella dei colori**.
 
-## Il manifesto
+## How it works
 
 Il manifesto di QRM è `assets/qrm/theme/default.json` (versione `1`). Ha tre sezioni:
 
@@ -55,6 +61,7 @@ Ogni voce ha `id` (il percorso della risorsa), `size` (`[larghezza, altezza]` in
 | `hud.panel` | `qrm:textures/gui/hud/panel.png` | 32 × 32 | 6, 6, 6, 6 |
 | `hub.tab`, `.selected` | `qrm:textures/gui/hub/tab[_selected].png` | 40 × 16 | 3, 3, 3, 3 |
 | `staff.slot` | `qrm:textures/gui/staff/slot.png` | 24 × 24 | 4, 4, 4, 4 |
+| `staff.icon.back`, `.refresh`, `.close` | `qrm:textures/gui/staff/icon_<nome>.png` | 16 × 16 | nessuno |
 | `staffpanel.frame` | `qrm:textures/gui/staffpanel/frame.png` | 48 × 48 | 12, 12, 12, 12 |
 | `staffpanel.row`, `.row.selected`, `.row.soon`, `.row.danger` | `qrm:textures/gui/staffpanel/row[_<stato>].png` | 32 × 16 | 6, 6, 6, 6 |
 | `staffpanel.inset` | `qrm:textures/gui/staffpanel/inset.png` | 24 × 24 | 5, 5, 5, 5 |
@@ -64,22 +71,26 @@ Ogni voce ha `id` (il percorso della risorsa), `size` (`[larghezza, altezza]` in
 Le sezioni delle gemme sono `players`, `player_management`, `server_management`, `moderation`, `economy`, `organizations`, `logs` e `quick_actions`.
 
 :::note Chiavi del vecchio menu staff
-Il manifesto contiene ancora le chiavi del menu staff rimosso nella 0.10. Restano valide, ma il codice attuale non disegna più `staff.frame`, `staff.plate`, `staff.tile.player|jobs|orgs|perms|off` e `staff.icon.player|jobs|orgs|perms`. Sono invece ancora usate dal widget `IconSlot` delle schermate dei moduli (per esempio quella della banca) `staff.slot` e le icone `staff.icon.back`, `staff.icon.refresh` e `staff.icon.close`, tutte da 16 pixel (`staff.slot` è 24 × 24).
+Il manifesto contiene ancora le chiavi del menu staff rimosso nella 0.10. Restano valide, ma il codice attuale non disegna più `staff.frame`, `staff.plate`, `staff.tile.player|jobs|orgs|perms|off` e `staff.icon.player|jobs|orgs|perms`. Sono invece ancora usate dal widget `IconSlot` delle schermate dei Modules (per esempio quella della banca) `staff.slot` e le icone `staff.icon.back`, `staff.icon.refresh` e `staff.icon.close`.
 :::
 
-Le texture di queste chiavi ancora in uso, oltre a `staff.slot` già in tabella:
+### Dove vengono usate
 
-| Chiave | `id` | `size` | `slice` |
-| --- | --- | --- | --- |
-| `staff.icon.back`, `.refresh`, `.close` | `qrm:textures/gui/staff/icon_<nome>.png` | 16 × 16 | nessuno |
-
-## Dove vengono usate
-
-- **Creazione del personaggio:** una carta d'identità. `character.idcard` è lo sfondo, `character.photo` la cornice della foto (con la testa 3D del giocatore, o `character.avatar` se manca), `character.field` e `character.field.focus` lo sfondo dei campi di testo, `character.toggle*` i pulsanti M/F. "Conferma e crea" e "Annulla" usano `button.confirm.*` e `button.danger.*`; `button.disabled` è comune a tutti gli stili.
+- **Creazione del Character:** una carta d'identità. `character.idcard` è lo sfondo, `character.photo` la cornice della foto (con la testa 3D del Player, o `character.avatar` se manca), `character.field` e `character.field.focus` lo sfondo dei campi di testo, `character.toggle*` i pulsanti M/F. "Conferma e crea" e "Annulla" usano `button.confirm.*` e `button.danger.*`; `button.disabled` è comune a tutti gli stili.
 - **Carosello:** le carte `character.card*` sono mini carte d'identità. "Gioca" e "Nuovo" usano `button.confirm.*`, "Archivia" `button.danger.*`. Lo sfondo è il mondo di gioco sfocato (`worldDim` e `worldFrost`): non c'è una texture di sfondo.
 - **HUD e hub:** `hud.panel` per l'HUD in alto a sinistra; schede `hub.tab*` e pannello `character.idcard` per l'hub; il quadratino di servizio usa `statusOn` e `statusOff`.
 - **Pannello staff:** `staffpanel.*` e i colori `staff*`. Cornice con doppio bordo dorato, righe a placca (`selected` per la selezione, `soon` per le azioni non ancora pronte, `danger` per quelle pericolose), riquadro incassato per le informazioni, pillola "presto" e una gemma da 14 pixel per sezione. Se il manifesto di un pack non ha queste chiavi, il pannello ripiega su un aspetto piatto.
 - `panel` resta nel tema per le schermate future.
+
+## Usage
+
+### Usare arte propria
+
+Sostituisci i PNG, nel mod o in un pack, agli stessi percorsi, **mantenendo le dimensioni** della tabella. Se cambi dimensioni o bordi, aggiorna nel manifesto `size` e `slice` della voce corrispondente. Nei nine-slice i bordi indicati in `slice` restano invariati e la parte centrale viene stirata.
+
+### Frammenti di tema dei Modules
+
+Un Module con interfaccia può registrare un proprio manifesto (`ThemeFragments.register`, vedi [Client API](client-api.md)) nello stesso formato di `default.json`. Le sue chiavi iniziano per `<idmodule>.`; chiavi senza prefisso o già esistenti sono scartate con un avviso. Un resource pack sostituisce un frammento allo stesso modo del tema di QRM: stesso percorso della risorsa del Module, e chiavi mancanti o invalide ricadono sul predefinito del Module.
 
 ## Regole di validazione
 
@@ -91,10 +102,12 @@ Le texture di queste chiavi ancora in uso, oltre a `staff.slot` già in tabella:
 - **JSON rotto, radice che non è un oggetto o versione sconosciuta:** si usa l'intero tema del mod e nel log compare un errore (`QRM theme manifest from the active pack is invalid: using the built-in theme`).
 - Il controllo non verifica che il PNG esista: una texture con `id` valido ma file mancante viene mostrata da Minecraft come texture mancante.
 
-## Usare arte propria
+## Limitations
 
-Sostituisci i PNG, nel mod o in un pack, agli stessi percorsi, **mantenendo le dimensioni** della tabella. Se cambi dimensioni o bordi, aggiorna nel manifesto `size` e `slice` della voce corrispondente. Nei nine-slice i bordi indicati in `slice` restano invariati e la parte centrale viene stirata.
+- Un pack può ridefinire i valori delle chiavi esistenti, non aggiungerne.
+- Il campo Genere della creazione del Character è solo grafico: non viene inviato né salvato.
 
-## Frammenti di tema dei moduli
+## Related
 
-Un modulo con interfaccia può registrare un proprio manifesto (`ThemeFragments.register`, vedi [Client API](client-api.md)) nello stesso formato di `default.json`. Le sue chiavi iniziano per `<idmodulo>.`; chiavi senza prefisso o già esistenti sono scartate con un avviso. Un resource pack sostituisce un frammento allo stesso modo del tema di QRM: stesso percorso della risorsa del modulo, e chiavi mancanti o invalide ricadono sul predefinito del modulo.
+- [Temi (server owner)](../server-owner/temi.md)
+- [Client API](client-api.md)

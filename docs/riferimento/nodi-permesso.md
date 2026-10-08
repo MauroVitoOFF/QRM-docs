@@ -1,31 +1,31 @@
 ---
-sidebar_label: Nodi di permesso
+sidebar_label: Nodi di Permission
 ---
 
-# Nodi di permesso
+# Nodi di Permission
 
-Due sistemi distinti: i nodi **di gioco** si danno ai personaggi, i nodi **staff** agli account. Le regole di forma e di risoluzione sono in [Permessi](../sviluppatori/servizi/permessi.md) e [Staff](../sviluppatori/servizi/staff.md).
+Questa pagina elenca tutti i nodi che QRM e il Module banca riconoscono. Sono due sistemi distinti: i nodi **di gioco** si danno ai Characters, i nodi **staff** agli account. Le regole di forma e di risoluzione sono in [Permissions](../sviluppatori/servizi/permessi.md) e [Staff](../sviluppatori/servizi/staff.md).
 
-## Nodi di gioco (per personaggio)
+## Nodi di gioco (per Character)
 
 | Nodo | Definito da | Significato |
 | --- | --- | --- |
-| `org.account.withdraw` | QRM (core) | Prelevare dal conto di un'organizzazione. |
+| `org.account.withdraw` | Core | Prelevare dall'Account di un'Organization. |
 | `bank.atm.use` | `qrm_bank` | Usare l'ATM. Consentito a tutti salvo `DENY` esplicito. |
 | `bank.transfer` | `qrm_bank` | Fare bonifici dall'ATM. Consentito a tutti salvo `DENY` esplicito. |
 
-I nodi `org.*` sono riservati al Core. Gli altri nodi (`police.arrest`, ...) li definiscono i lavori, le organizzazioni e i moduli del server.
+I nodi `org.*` sono riservati al Core. Gli altri nodi (`police.arrest`, ...) li definiscono i Jobs, le Organizations e i Modules del server.
 
 ## Nodi staff (per account)
 
-Gli operatori (livello *gamemaster*) hanno ogni nodo. Per gli altri si concedono con `/qrm admin staff grant <giocatore> <nodo>`; si possono usare `*` e pattern sotto `staff.`.
+Gli operatori (livello *gamemaster*) hanno ogni nodo. Per gli altri si concedono con `/qrm admin staff grant <player> <node>`; si possono usare `*` e pattern sotto `staff.`.
 
 | Nodo | Cosa permette |
 | --- | --- |
 | `staff.panel` | Aprire il pannello staff. |
-| `staff.jobs`, `staff.orgs`, `staff.perms` | Riservati alle voci di lavori, organizzazioni e permessi. Oggi nessuna voce di QRM li usa. |
+| `staff.jobs`, `staff.orgs`, `staff.perms` | Riservati a voci di Jobs, Organizations e Permissions. Oggi nessuna voce di QRM li usa. |
 | `staff.bank` | La voce Banca del pannello. |
-| `staff.module.<id>` | Le voci aggiunte da un modulo. |
+| `staff.module.<id>` | Le voci aggiunte da un Module. |
 | `staff.player.teleport_to` | Teleport to. |
 | `staff.player.bring` | Bring here. |
 | `staff.player.freeze` | Freeze. |
@@ -36,5 +36,10 @@ Gli operatori (livello *gamemaster*) hanno ogni nodo. Per gli altri si concedono
 | `staff.player.ban` | Ban. |
 | `staff.player.view_character` | View character. |
 | `staff.player.view_permissions` | View permissions. |
-| `staff.player.*` | Tutte le azioni della scheda giocatore. |
+| `staff.player.*` | Tutte le azioni della scheda Player. |
 | `staff.*` | Tutti i nodi staff. |
+
+## Related
+
+- [Permissions (server owner)](../server-owner/permessi.md)
+- [Pannello staff](../server-owner/pannello-staff.md)

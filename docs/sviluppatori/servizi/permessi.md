@@ -1,52 +1,65 @@
 ---
-sidebar_label: Permessi
+sidebar_label: Permissions
 ---
 
-# Permessi
+# Permissions
 
-I permessi di gioco sono **nodi** stringa, come `police.arrest`, valutati per **personaggio**. `PermissionService` li risolve; `PermissionNodes` li valida.
+Questa pagina documenta `PermissionService` e `PermissionNodes`. È rivolta agli sviluppatori di Modules. Per l'uso lato server vedi [Permissions](../../server-owner/permessi.md).
+
+:::caution Experimental
+API `0.x` (dalla 0.2): può cambiare tra una minor e l'altra.
+:::
+
+## Overview
+
+Le Permissions di gioco sono **nodi** stringa, come `police.arrest`, valutati per **Character**. `PermissionService` li risolve; `PermissionNodes` li valida.
 
 ```java
 PermissionService perms = QRM.get(PermissionService.class);
 if (perms.has(characterId, "police.arrest")) { /* ... */ }
 ```
 
-## Forma dei nodi
+## How it works
+
+### Forma dei nodi
 
 - Un nodo esatto è `[a-z0-9_]+` separato da punti, fino a 128 caratteri (`PermissionNodes.isExactNode`).
 - Un *pattern* può finire con `.*` (`police.*`) oppure essere `*` da solo (`PermissionNodes.isPattern`).
 - `PermissionNodes.requirePattern(s)` restituisce `s` o lancia `IllegalArgumentException`.
 
-## Da dove arrivano
+### Sorgenti e risoluzione
 
-- **Dal lavoro:** i nodi del grade, ereditati dai grade inferiori, valgono solo mentre il personaggio è in servizio.
-- **Override per personaggio:** `grant` e `deny`, anche con pattern.
+- **Dal Job:** i nodi del Grade, ereditati dai Grades inferiori, valgono solo mentre il Character è in servizio.
+- **Override per Character:** `grant` e `deny`, anche con pattern.
+- L'override più specifico vince; a parità di specificità vince `deny`; un override batte sempre i nodi del Job.
 
-## Come si risolvono
-
-- L'override più specifico vince.
-- A parità di specificità vince `deny`.
-- Un override batte sempre i nodi del lavoro.
-
-## Il servizio
+## API
 
 | Metodo | Cosa fa |
 | --- | --- |
-| `has(CharacterId, node)` | Il personaggio ha il nodo? |
+| `has(CharacterId, node)` | Il Character ha il nodo? |
 | `effective(CharacterId)` | L'insieme dei nodi effettivi. |
 | `grant`, `deny`, `clear` `(CharacterId, node)` | Imposta o rimuove un override. Un pattern non valido lancia `IllegalArgumentException`. |
 | `overridesOf(CharacterId)` | Gli override, come mappa nodo → `PermissionEffect` (`GRANT`, `DENY`, `CLEARED`). |
 
 `PermissionChangedEvent(character, node, effect)` parte dopo ogni modifica.
 
-## Permessi "concessi per impostazione predefinita"
+## Examples
 
-`PermissionService` non ha il concetto di "consentito a tutti". Se vuoi un nodo permesso di base e negabile (come fa la banca con `bank.atm.use`), controlla l'assenza di un `DENY`:
+`PermissionService` non ha il concetto di "consentito a tutti". Per un nodo consentito di base ma negabile (come `bank.atm.use` della banca), controlla l'assenza di un `DENY`:
 
 ```java
 boolean allowed = permissions.overridesOf(character).get("mymod.use") != PermissionEffect.DENY;
 ```
 
-## Permessi dello staff
+## Limitations
 
-Il pannello staff usa un sistema separato, per **account** e non per personaggio: vedi [Staff](staff.md).
+- Non esiste una Permission "consentita per impostazione predefinita": vedi l'esempio sopra.
+- Le Permissions dello staff sono un sistema separato, per account: vedi [Staff](staff.md).
+
+## Related
+
+- [Jobs](lavori.md)
+- [Organizations](organizzazioni.md)
+- [Staff](staff.md)
+- [Nodi di Permission (riferimento)](../../riferimento/nodi-permesso.md)

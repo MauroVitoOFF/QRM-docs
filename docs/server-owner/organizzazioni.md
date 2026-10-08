@@ -1,31 +1,48 @@
 ---
-sidebar_label: Organizzazioni
+sidebar_label: Organizations
 ---
 
-# Organizzazioni
+# Organizations
 
-Un'organizzazione ha un id, un'etichetta, dei **rank** personalizzati (con livello e nodi di permesso), dei **membri** e un **conto in comune** multi-valuta. Un personaggio può stare in più organizzazioni.
+Questa pagina descrive come creare e gestire le Organizations. È rivolta ai server owner. Disponibile dalla 0.3.
 
-- Si creano solo a runtime (comandi o API), non da file.
-- Non si cancellano: si **archiviano** e il loro conto viene congelato.
-- I rank ereditano i nodi dei rank con `level` inferiore della stessa organizzazione.
-- Il nodo `org.account.withdraw` controlla i prelievi dal conto dell'organizzazione.
-- Il Core non paga stipendi dal conto dell'organizzazione: lo fa un modulo.
+## Overview
 
-Un lavoro può collegarsi a un'organizzazione (`"org": "<id>"` nel file del [lavoro](lavori.md)): chi ha quel lavoro, in servizio, è membro implicito e usa i nodi del proprio grade.
+Un'Organization ha un id, un'etichetta, dei **Ranks** (con livello e Permissions), dei **membri** e un **Account** in comune, multi-Currency. Un Character può stare in più Organizations.
 
-## Comandi
+## How it works
+
+- Le Organizations si creano solo a runtime (comandi o API), non da file.
+- Non si cancellano: si **archiviano** e il loro Account viene congelato.
+- I Ranks ereditano i Permissions dei Ranks con `level` inferiore della stessa Organization.
+- Il Permission `org.account.withdraw` controlla i prelievi dall'Account dell'Organization.
+- Un [Job](lavori.md) può collegarsi a un'Organization (`"org": "<id>"`): chi ha quel Job, in servizio, è membro implicito e usa i Permissions del proprio Grade.
+
+## Usage
 
 | Comando | Chi | Cosa fa |
 | --- | --- | --- |
-| `/org` (o `/org list`) | giocatori | Elenca le organizzazioni del personaggio attivo. |
-| `/org info <org>` | membri e operatori | Mostra i dettagli dell'organizzazione. |
-| `/org create <id> <nome>` | operatori | Crea un'organizzazione. |
-| `/org archive <id>` | operatori | Archivia l'organizzazione. |
-| `/org rank set <org> <rank> <livello> [nodi…]` | operatori | Crea o modifica un rank. L'etichetta coincide con l'id. |
-| `/org rank remove <org> <rank>` | operatori | Rimuove un rank. |
-| `/org member add <org> <giocatore> <rank>` | operatori | Aggiunge un membro. |
-| `/org member setrank <org> <giocatore> <rank>` | operatori | Cambia il rank di un membro. |
-| `/org member remove <org> <giocatore>` | operatori | Rimuove un membro. |
+| `/org` (o `/org list`) | Players | Elenca le Organizations del Character attivo. |
+| `/org info <org>` | membri e operatori | Mostra i dettagli dell'Organization. |
+| `/org create <id> <label>` | operatori | Crea un'Organization. |
+| `/org archive <id>` | operatori | Archivia l'Organization. |
+| `/org rank set <org> <rank> <level> [nodes…]` | operatori | Crea o modifica un Rank. L'etichetta coincide con l'id. |
+| `/org rank remove <org> <rank>` | operatori | Rimuove un Rank. |
+| `/org member add <org> <player> <rank>` | operatori | Aggiunge un membro. |
+| `/org member setrank <org> <player> <rank>` | operatori | Cambia il Rank di un membro. |
+| `/org member remove <org> <player>` | operatori | Rimuove un membro. |
 
-Il Tab propone le organizzazioni esistenti e i loro rank. I sottocomandi per operatori non compaiono agli altri giocatori. Restano validi anche `/qrm org list|info` e `/qrm admin org …`.
+Il Tab propone le Organizations esistenti e i loro Ranks. I sottocomandi per operatori non compaiono agli altri Players. Restano validi anche `/qrm org list|info` e `/qrm admin org …`.
+
+## Limitations
+
+- Le Organizations non si cancellano e non si definiscono da file.
+- Con `/org rank set` l'etichetta del Rank coincide con l'id; per un'etichetta leggibile serve l'API.
+- Il Core non paga stipendi dall'Account dell'Organization: lo fa un Module.
+- Il pannello staff non ha una schermata per le Organizations: si usano i comandi.
+
+## Related
+
+- [Jobs](lavori.md)
+- [Permissions](permessi.md)
+- [Organizations per sviluppatori](../sviluppatori/servizi/organizzazioni.md)
