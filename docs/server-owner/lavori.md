@@ -28,8 +28,11 @@ Un file per lavoro in `<world>/qrm/data/jobs/<id>.json`:
 
 | Comando | Chi | Cosa fa |
 | --- | --- | --- |
-| `/qrm job info` | giocatori | Mostra lavoro e grade del personaggio attivo. |
-| `/qrm duty on` / `/qrm duty off` | giocatori | Entra o esce di servizio. Disponibile se `jobs.selfDuty` è `true`. |
-| `/qrm admin job list` | operatori | Elenca i lavori registrati. |
-| `/qrm admin job set <giocatore> <job> <grade>` | operatori | Assegna lavoro e grade. |
-| `/qrm admin job fire <giocatore>` | operatori | Licenzia. |
+| `/job` (o `/job info`) | giocatori | Mostra lavoro e grade del personaggio attivo. |
+| `/duty` | giocatori | Inverte il servizio: entra se è fuori, esce se è dentro. Disponibile se `jobs.selfDuty` è `true`. |
+| `/duty on` / `/duty off` | giocatori | Entra o esce di servizio in modo esplicito. |
+| `/job list` | operatori | Elenca i lavori registrati. |
+| `/job set <giocatore> <job> <grade>` | operatori | Assegna lavoro e grade. Il Tab propone i lavori esistenti e poi i grade del lavoro scelto. |
+| `/job remove <giocatore>` | operatori | Licenzia. |
+
+I sottocomandi per operatori non compaiono agli altri giocatori. Restano validi anche i comandi lunghi: `/qrm job info`, `/qrm duty`, `/qrm admin job list|set|fire`.

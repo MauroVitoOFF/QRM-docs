@@ -10,4 +10,4 @@ QRM è un framework per server roleplay su NeoForge: personaggi, economia, lavor
 - **Server owner:** installa e configura QRM, gestisci staff, banca e temi. Parti da [Server owner](../server-owner/index.md).
 - **Sviluppatori:** estendi QRM con i tuoi mod. Vedi [Sviluppatori](../sviluppatori/index.md).
 
-Versione documentata: **0.10.0** (Minecraft 26.2, NeoForge 26.2.0.88, Java 25).
+Versione documentata: **0.11.0** (Minecraft 26.2, NeoForge 26.2.0.88, Java 25).

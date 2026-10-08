@@ -16,3 +16,4 @@ sidebar_label: Roadmap
 | 0.8 | Menu staff a tessere (poi sostituito); tessera Economia (0.8.1). |
 | 0.9 | Tessera Banca con la gestione del denaro. |
 | 0.10 | Pannello staff HUD con sezioni, scheda giocatore e azioni, permessi staff per account; vecchio menu rimosso. |
+| 0.11 | Comandi brevi: `/job`, `/duty`, `/money`, `/char`, `/org`, `/perm`, `/duty` a interruttore, completamento con Tab, opzione `commands.shortAliases`. |

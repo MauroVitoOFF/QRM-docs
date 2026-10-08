@@ -22,7 +22,7 @@ Entrambi i tasti si cambiano in Opzioni → Controlli. Ogni altro tasto, movimen
 
 La Home mostra il numero di giocatori online e le sezioni: *Player Management*, *Server Management*, *Moderation*, *Economy*, *Organizations*, *Logs & Transactions*, *Quick Actions*. Una sezione senza voci consentite è visibile ma attenuata e non si può aprire.
 
-Oggi QRM registra nel pannello la lista **Players** con la scheda giocatore, e la banca aggiunge la voce **Banca** in *Economy*. Le altre sezioni compaiono vuote finché un modulo non vi aggiunge voci. Per lavori, organizzazioni e permessi si usano i comandi `/qrm admin job|org|perm`.
+Oggi QRM registra nel pannello la lista **Players** con la scheda giocatore, e la banca aggiunge la voce **Banca** in *Economy*. Le altre sezioni compaiono vuote finché un modulo non vi aggiunge voci. Per lavori, organizzazioni e permessi si usano i comandi `/job`, `/org` e `/perm`.
 
 ## Chi può usarlo
 

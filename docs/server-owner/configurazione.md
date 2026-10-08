@@ -17,7 +17,8 @@ Si applica al riavvio.
 | `characters.namePattern` | `^[\p{L}][\p{L}' -]*$` | Espressione regolare valida per nome e cognome. |
 | `characters.uniqueNames` | `true` | Rifiuta nomi completi già in uso. |
 | `economy.defaultCurrency` | `QRM` | Valuta usata dai comandi quando non specificata e mostrata nell'HUD. |
-| `jobs.selfDuty` | `true` | I giocatori entrano/escono di servizio da soli (`/qrm duty`, pulsante dell'hub). Se `false` lo cambiano solo i moduli; il logout mette comunque fuori servizio. |
+| `jobs.selfDuty` | `true` | I giocatori entrano/escono di servizio da soli (`/duty`, pulsante dell'hub). Se `false` lo cambiano solo i moduli; il logout mette comunque fuori servizio. |
+| `commands.shortAliases` | `true` | Registra le scorciatoie `/job`, `/duty`, `/money` (`/balance`, `/bal`, `/pay`), `/char`, `/org` e `/perm`, oltre ai comandi `/qrm`. Metti `false` se un altro mod usa gli stessi nomi. Si applica al riavvio o con `/reload`. |
 | `gui.hub.tabs` | `accounts`, `job`, `orgs` | Schede dell'hub, nell'ordine indicato. Elenco vuoto = hub non disponibile. |
 | `gui.hud.elements` | `name`, `balance`, `job` | Righe dell'HUD nell'ordine indicato; i moduli aggiungono le proprie (es. `bank:debt`). Elenco vuoto = HUD nascosto. |
 

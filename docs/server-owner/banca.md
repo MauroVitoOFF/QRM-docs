@@ -55,7 +55,7 @@ Il limite giornaliero somma i ritiri delle ultime 24 ore leggendo le 500 transaz
 
 ## Permessi
 
-`bank.atm.use` e `bank.transfer` sono **consentiti a tutti salvo un DENY esplicito** sul personaggio, per esempio con `/qrm admin perm deny <giocatore> bank.transfer`.
+`bank.atm.use` e `bank.transfer` sono **consentiti a tutti salvo un DENY esplicito** sul personaggio, per esempio con `/perm deny <giocatore> bank.transfer`.
 
 ## Comandi (operatori)
 
@@ -67,11 +67,11 @@ Il limite giornaliero somma i ritiri delle ultime 24 ore leggendo le 500 transaz
 | `/bank unfreeze <Nome Cognome>` | Scongela il conto. |
 | `/bank audit` | Controlla la coerenza del registro e confronta il contante dei giocatori online con il saldo della cassa. |
 
-Per togliere denaro a un giocatore c'è `/qrm admin take`, descritto in [Personaggi](personaggi.md).
+Per dare o togliere denaro a un giocatore ci sono `/money give` e `/money take`, descritti in [Personaggi](personaggi.md).
 
 ## Nel pannello staff
 
-Con la banca installata, il [pannello staff](pannello-staff.md) ha la voce **Banca** in *Economy* (nodo `staff.bank`). Serve un giocatore come bersaglio. Mostra lo stato del conto, i saldi e gli ultimi movimenti, e ha sei azioni: **Dai** e **Togli** denaro (come `/qrm admin grant|take`), **Congela** e **Scongela**, **Dai ATM** e **Audit**. Il server ricontrolla il permesso a ogni pacchetto e registra ogni azione riuscita nel log.
+Con la banca installata, il [pannello staff](pannello-staff.md) ha la voce **Banca** in *Economy* (nodo `staff.bank`). Serve un giocatore come bersaglio. Mostra lo stato del conto, i saldi e gli ultimi movimenti, e ha sei azioni: **Dai** e **Togli** denaro (come `/money give` e `/money take`), **Congela** e **Scongela**, **Dai ATM** e **Audit**. Il server ricontrolla il permesso a ogni pacchetto e registra ogni azione riuscita nel log.
 
 ## Limiti noti
 

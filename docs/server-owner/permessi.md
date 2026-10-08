@@ -21,11 +21,11 @@ I permessi di gioco sono **nodi** stringa, come `police.arrest`: lettere minusco
 
 | Comando | Cosa fa |
 | --- | --- |
-| `/qrm admin perm grant <giocatore> <nodo>` | Concede il nodo al personaggio attivo. |
-| `/qrm admin perm deny <giocatore> <nodo>` | Nega il nodo. |
-| `/qrm admin perm clear <giocatore> <nodo>` | Rimuove l'override. |
+| `/perm grant <giocatore> <nodo>` | Concede il nodo al personaggio attivo. |
+| `/perm deny <giocatore> <nodo>` | Nega il nodo. |
+| `/perm clear <giocatore> <nodo>` | Rimuove l'override. |
 
-Il nodo può contenere il jolly: `police.*`.
+Il nodo può contenere il jolly: `police.*`. Solo per operatori. Resta valida anche la forma `/qrm admin perm …`.
 
 ## Permessi dello staff
 
