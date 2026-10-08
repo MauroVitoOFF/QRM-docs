@@ -4,7 +4,7 @@ sidebar_label: Banca e ATM
 
 # Banca e ATM
 
-Il modulo `qrm_bank` è facoltativo e richiede `qrm`. Aggiunge un conto per personaggio, lo sportello ATM, il contante fisico e i bonifici. Va installato su server e client, alla stessa versione di QRM.
+Il modulo `qrm_bank` è facoltativo e richiede `qrm`. Aggiunge un conto per personaggio, lo sportello ATM, il contante fisico e i bonifici. A differenza di `qrm`, che sui client è facoltativo, la banca registra un blocco e degli item: va installata su server **e client**, alla stessa versione di QRM.
 
 ## Come funziona
 

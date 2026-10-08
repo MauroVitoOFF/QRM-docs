@@ -32,4 +32,4 @@ Un **modulo** è un mod a sé, con un proprio jar, un proprio `modId` e una prop
 
 ## Cosa installare
 
-Un server installa `qrm` e, se vuole la banca, anche `qrm_bank` (che richiede `qrm`). Server e client devono avere gli stessi jar, alla stessa versione.
+Un server installa `qrm` e, se vuole la banca, anche `qrm_bank` (che richiede `qrm`). `qrm` sui client è facoltativo (HUD, hub, schermate); `qrm_bank` invece va installato anche sui client. Un client che ha un jar di QRM deve averlo alla stessa versione del server.
