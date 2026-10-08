@@ -41,7 +41,7 @@ EventBus.register(Class<E> type, Priority priority, boolean ignoreCancelled, Str
 
 - Un handler lento rallenta il thread del server.
 - Gli eventi `Post` e `Changed` non possono annullare un'azione già avvenuta.
-- Per intervenire sulle operazioni di denaro, anche della banca, usa `TransactionPreEvent` e il campo `reason` della richiesta (per esempio `bank.withdraw`). Vedi [API della banca](api-banca.md).
+- Per intervenire sulle operazioni di denaro, anche di Bank, usa `TransactionPreEvent` e il campo `reason` della richiesta (per esempio `bank.withdraw`). Vedi [API di Bank](../modules/bank/api.md).
 
 ## Related
 

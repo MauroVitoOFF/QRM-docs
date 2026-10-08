@@ -1,10 +1,10 @@
 ---
-sidebar_label: API della banca
+sidebar_label: API
 ---
 
-# API della banca
+# API di Bank
 
-Questa pagina descrive come integrarsi con il Module `qrm_bank`. È rivolta agli sviluppatori di Modules. Disponibile dalla 0.7. Per l'uso lato server vedi [Banca e ATM](../server-owner/banca.md).
+Questa pagina descrive come integrarsi con il Module `qrm_bank` dal codice. È rivolta agli sviluppatori di Modules. Disponibile dalla 0.7.
 
 :::caution Experimental
 API `0.x`: può cambiare tra una minor e l'altra.
@@ -12,11 +12,11 @@ API `0.x`: può cambiare tra una minor e l'altra.
 
 ## Overview
 
-`qrm_bank` è un [Module](../intro/moduli.md), non parte del framework. Per integrarti hai due strade: gli **eventi** che pubblica, e i **motivi** (`reason`) delle sue Transactions, su cui puoi intervenire con `TransactionPreEvent`.
+Per integrarti con Bank hai due strade: gli **eventi** che pubblica, e i **motivi** (`reason`) delle sue Transactions, su cui puoi intervenire con `TransactionPreEvent`. L'API di Bank è nel Module `qrm_bank` (pacchetto `dev.qrm.bank.api`), non in `qrm-api`.
 
 ## How it works
 
-Le operazioni della banca passano da `TransactionService`, quindi `TransactionPreEvent` le vede prima che avvengano. Il campo `reason` della richiesta le distingue:
+Le operazioni di Bank passano da `TransactionService`, quindi `TransactionPreEvent` le vede prima che avvengano. Il campo `reason` della richiesta le distingue:
 
 | `reason` | Operazione |
 | --- | --- |
@@ -25,11 +25,11 @@ Le operazioni della banca passano da `TransactionService`, quindi `TransactionPr
 | `bank.transfer` | Bonifico. |
 | `bank.deposit.revert` | Storno interno di un deposito. |
 
-Se un handler **cambia l'importo** di un ritiro o di un deposito con `setAmount`, la banca annulla l'operazione e la storna.
+Se un handler **cambia l'importo** di un ritiro o di un deposito con `setAmount`, Bank annulla l'operazione e la storna.
 
 ## API
 
-Pacchetto `dev.qrm.bank.api`. Gli eventi partono **dopo** l'operazione e non sono annullabili.
+Gli eventi partono **dopo** l'operazione e non sono annullabili.
 
 | Evento | Campi |
 | --- | --- |
@@ -62,19 +62,20 @@ QRM.events().register(TransactionPreEvent.class, "mymod", e -> {
 
 `vietato` è una funzione del tuo Module.
 
-### Senza dipendere dalla banca
+### Senza dipendere da Bank
 
 - L'Account bancario di un Character è il suo Account di QRM: `AccountService.accountsOf(OwnerRef.character(id))`, il primo.
 - Per trovare un Character per nome: `CharacterService.findByName("Nome Cognome")`.
-- Le Permissions `bank.atm.use` e `bank.transfer` sono consentite a tutti salvo un `DENY` esplicito: controllale come descritto in [Permissions](servizi/permessi.md).
+- Le Permissions `bank.atm.use` e `bank.transfer` sono consentite a tutti salvo un `DENY` esplicito: controllale come descritto in [Permissions](../../sviluppatori/servizi/permessi.md).
 
 ## Limitations
 
-- Gli eventi della banca non sono annullabili: per intervenire prima usa `TransactionPreEvent`.
-- L'API della banca è nel Module `qrm_bank`, non in `qrm-api`.
+- Gli eventi di Bank non sono annullabili: per intervenire prima usa `TransactionPreEvent`.
+- L'API richiede il Module `qrm_bank` nel classpath di compilazione.
 
 ## Related
 
-- [Eventi](eventi.md)
-- [Economy](servizi/economia.md)
-- [Banca e ATM](../server-owner/banca.md)
+- [Bank](index.md)
+- [Eventi](../../sviluppatori/eventi.md)
+- [Economy](../../sviluppatori/servizi/economia.md)
+- [Riferimento degli eventi](../../riferimento/eventi.md)

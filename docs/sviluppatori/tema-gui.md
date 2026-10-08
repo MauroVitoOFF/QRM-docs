@@ -71,7 +71,7 @@ Ogni voce ha `id` (il percorso della risorsa), `size` (`[larghezza, altezza]` in
 Le sezioni delle gemme sono `players`, `player_management`, `server_management`, `moderation`, `economy`, `organizations`, `logs` e `quick_actions`.
 
 :::note Chiavi del vecchio menu staff
-Il manifesto contiene ancora le chiavi del menu staff rimosso nella 0.10. Restano valide, ma il codice attuale non disegna più `staff.frame`, `staff.plate`, `staff.tile.player|jobs|orgs|perms|off` e `staff.icon.player|jobs|orgs|perms`. Sono invece ancora usate dal widget `IconSlot` delle schermate dei Modules (per esempio quella della banca) `staff.slot` e le icone `staff.icon.back`, `staff.icon.refresh` e `staff.icon.close`.
+Il manifesto contiene ancora le chiavi del menu staff rimosso nella 0.10. Restano valide, ma il codice attuale non disegna più `staff.frame`, `staff.plate`, `staff.tile.player|jobs|orgs|perms|off` e `staff.icon.player|jobs|orgs|perms`. Sono invece ancora usate dal widget `IconSlot` delle schermate dei Modules (per esempio quella di Bank) `staff.slot` e le icone `staff.icon.back`, `staff.icon.refresh` e `staff.icon.close`.
 :::
 
 ### Dove vengono usate

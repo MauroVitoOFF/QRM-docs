@@ -46,7 +46,7 @@ if (perms.has(characterId, "police.arrest")) { /* ... */ }
 
 ## Examples
 
-`PermissionService` non ha il concetto di "consentito a tutti". Per un nodo consentito di base ma negabile (come `bank.atm.use` della banca), controlla l'assenza di un `DENY`:
+`PermissionService` non ha il concetto di "consentito a tutti". Per un nodo consentito di base ma negabile (come `bank.atm.use` di Bank), controlla l'assenza di un `DENY`:
 
 ```java
 boolean allowed = permissions.overridesOf(character).get("mymod.use") != PermissionEffect.DENY;

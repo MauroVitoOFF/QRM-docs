@@ -4,7 +4,7 @@ sidebar_label: Configurazione
 
 # Configurazione
 
-Questa pagina elenca le chiavi di configurazione di QRM. È rivolta ai server owner. La configurazione della banca è in [Banca e ATM](banca.md).
+Questa pagina elenca le chiavi di configurazione di QRM. È rivolta ai server owner. La configurazione di Bank è in [Configurazione di Bank](../modules/bank/configurazione.md).
 
 ## `config/qrm-common.toml`
 
@@ -42,5 +42,5 @@ Una Currency si definisce con un file in `<world>/qrm/data/currencies/*.json`. V
 ## Related
 
 - [Installazione](installazione.md)
-- [Banca e ATM](banca.md)
+- [Bank](../modules/bank/index.md)
 - [Jobs](lavori.md)

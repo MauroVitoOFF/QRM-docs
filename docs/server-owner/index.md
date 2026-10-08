@@ -18,9 +18,12 @@ Questa sezione descrive come installare, configurare e gestire QRM su un server.
 | [Organizations](organizzazioni.md) | Creare Organizations, Ranks e membri. |
 | [Permissions](permessi.md) | Nodi, override e comandi. |
 | [Pannello staff](pannello-staff.md) | Il pannello in overlay e le Permissions dello staff. |
-| [Banca e ATM](banca.md) | Il Module `qrm_bank`. |
 | [Temi](temi.md) | Cambiare l'aspetto della GUI con un resource pack. |
 | [Manutenzione](manutenzione.md) | Backup, audit e risoluzione dei problemi. |
+
+## Modules
+
+I Modules ufficiali, come Bank, hanno una sezione propria: [Modules](../modules/index.md). Ogni Module ha le sue pagine di installazione, configurazione e comandi.
 
 ## Comandi in breve
 

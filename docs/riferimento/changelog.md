@@ -17,7 +17,7 @@ Un client che ha QRM deve avere la stessa versione del protocollo del server, qu
 | 0.8 | Menu staff (poi sostituito). | 6 |
 | 0.10 | Pannello staff HUD: accesso staff, canale dati del pannello, azioni sul Player. Job e Organizations nello snapshot dei Players. Il vecchio menu `/qrm staff` viene rimosso. | 7, 8, 9 |
 
-Il protocollo della banca è alla versione 2 dalla 0.9 (tessera Banca nel menu staff, poi voce del pannello).
+Il protocollo di Bank è alla versione 2 dalla 0.9 (tessera Banca nel menu staff, poi voce del pannello).
 
 ## Cambi di compatibilità dell'API
 

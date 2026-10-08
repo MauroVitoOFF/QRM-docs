@@ -26,14 +26,14 @@ Fai una copia prima di ogni aggiornamento di QRM.
 | Comando | Cosa controlla |
 | --- | --- |
 | `/qrm admin audit` | Confronta il saldo di ogni Account con la somma delle sue Transactions. Se è tutto coerente risponde che i saldi sono coerenti; altrimenti elenca ogni Account e Currency con saldo atteso e trovato. |
-| `/bank audit` | Con la banca: la coerenza del registro e il confronto fra il contante dei Players online e il saldo della cassa. Un item duplicato oltre la cassa lo segnala solo per i Players online. |
+| `/bank audit` | Con Bank: la coerenza del registro e il confronto fra il contante dei Players online e il saldo della cassa. Un item duplicato oltre la cassa lo segnala solo per i Players online. |
 
 ### Problemi frequenti
 
 | Sintomo | Causa probabile |
 | --- | --- |
-| Il client viene respinto per registro non corrispondente. | `config/qrm_bank/cash.json` diverso fra client e server, oppure versioni diverse di QRM o della banca. Distribuisci lo stesso file e gli stessi jar. |
-| La banca non parte e il log indica `cash.json`. | Il file è illeggibile o invalido: controlla le regole in [Banca e ATM](banca.md). |
+| Il client viene respinto per registro non corrispondente. | `config/qrm_bank/cash.json` diverso fra client e server, oppure versioni diverse di QRM o di Bank. Distribuisci lo stesso file e gli stessi jar. |
+| Bank non parte e il log indica `cash.json`. | Il file è illeggibile o invalido: controlla le regole in [Configurazione di Bank](../modules/bank/configurazione.md). |
 | Nel log: `cash.json: la valuta X non e' registrata in QRM`. | Manca la Currency in `<world>/qrm/data/currencies/`: il contante di quella Currency non è utilizzabile finché non la aggiungi. |
 | Nel log: `cash.json: X ha N decimali ma la valuta QRM ne ha M`. | `decimals` in `cash.json` non coincide con quello della Currency. |
 | Nel log: `Invalid job file <file>`. | Il file del Job è invalido, per esempio la Currency di `salary` non esiste. Il Job viene scartato. |
@@ -52,4 +52,4 @@ Fai una copia prima di ogni aggiornamento di QRM.
 
 - [Installazione](installazione.md)
 - [Configurazione](configurazione.md)
-- [Banca e ATM](banca.md)
+- [Bank](../modules/bank/index.md)

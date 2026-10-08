@@ -41,7 +41,7 @@ Un **Module** è un mod a sé, con un proprio jar, un proprio `modId` e una prop
 
 ## Usage
 
-Un server installa `qrm` e, se vuole la banca, anche `qrm_bank` (che richiede `qrm`).
+Un server installa `qrm` e, se vuole Bank, anche `qrm_bank` (che richiede `qrm`).
 
 - Il client di `qrm` è facoltativo: abilita HUD, hub e schermate.
 - `qrm_bank` registra un blocco e degli item, quindi va installato anche sui client.
@@ -49,6 +49,7 @@ Un server installa `qrm` e, se vuole la banca, anche `qrm_bank` (che richiede `q
 
 ## Related
 
+- [Modules ufficiali](../modules/index.md)
 - [Requisiti](requisiti.md)
 - [Installazione](../server-owner/installazione.md)
 - [Quickstart per sviluppatori](../sviluppatori/quickstart.md)

@@ -37,7 +37,7 @@ Regole di risoluzione:
 
 ## Limitations
 
-- Non esiste un nodo "consentito a tutti per impostazione predefinita": un Module che lo vuole controlla l'assenza di un `DENY`, come fa la banca per `bank.atm.use` e `bank.transfer`.
+- Non esiste un nodo "consentito a tutti per impostazione predefinita": un Module che lo vuole controlla l'assenza di un `DENY`, come fa Bank per `bank.atm.use` e `bank.transfer`.
 - Gli override agiscono sul Character attivo del Player.
 
 ## Related

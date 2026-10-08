@@ -14,7 +14,7 @@ Il pannello staff è un overlay in alto a sinistra che non blocca il gameplay. O
 
 La Home mostra il numero di Players online e le sezioni: *Player Management*, *Server Management*, *Moderation*, *Economy*, *Organizations*, *Logs & Transactions*, *Quick Actions*. Una sezione senza voci consentite è visibile ma attenuata e non si può aprire.
 
-Oggi QRM registra nel pannello la lista **Players** con la scheda Player; il Module banca aggiunge la voce **Banca** in *Economy*. Le altre sezioni sono vuote finché un Module non vi aggiunge voci.
+Oggi QRM registra nel pannello la lista **Players** con la scheda Player; il Module Bank aggiunge la voce **Banca** in *Economy*. Le altre sezioni sono vuote finché un Module non vi aggiunge voci.
 
 Le Permissions del pannello sono **per account**, non per Character. Gli operatori (livello *gamemaster*) hanno ogni nodo.
 
@@ -45,7 +45,7 @@ Si possono concedere `*` oppure pattern che iniziano con `staff.` (per esempio `
 | Nodo | Cosa permette |
 | --- | --- |
 | `staff.panel` | Aprire il pannello. Senza, non si vede nulla. |
-| `staff.bank` | La voce Banca (con la banca installata). |
+| `staff.bank` | La voce Banca (con Bank installato). |
 | `staff.module.<id>` | Le voci aggiunte da un Module. |
 | `staff.player.<action>` | Una singola azione della scheda Player; `staff.player.*` le concede tutte. |
 | `staff.jobs`, `staff.orgs`, `staff.perms` | Riservati a voci di Jobs, Organizations e Permissions. Oggi nessuna voce di QRM li usa. |
@@ -76,13 +76,13 @@ Il server ricontrolla il nodo a **ogni** azione, limita la frequenza a una richi
 ## Limitations
 
 - Le azioni funzionano solo su Players online.
-- Le sezioni *Player Management*, *Server Management*, *Moderation*, *Organizations*, *Logs & Transactions* e *Quick Actions* non hanno voci: This functionality is not currently available. Solo *Economy* ha una voce, quella della banca.
+- Le sezioni *Player Management*, *Server Management*, *Moderation*, *Organizations*, *Logs & Transactions* e *Quick Actions* non hanno voci: This functionality is not currently available. Solo *Economy* ha una voce, quella di Bank.
 - Il pannello non ha schermate per Jobs, Organizations e Permissions: si usano `/job`, `/org` e `/perm`.
 - Serve il client di QRM; i Players senza client non vedono il pannello.
 
 ## Related
 
-- [Banca e ATM](banca.md)
+- [Comandi di Bank](../modules/bank/comandi.md)
 - [Permissions](permessi.md)
 - [Nodi di Permission (riferimento)](../riferimento/nodi-permesso.md)
 - [Staff per sviluppatori](../sviluppatori/servizi/staff.md)

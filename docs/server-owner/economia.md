@@ -49,10 +49,10 @@ Equivalenze con la forma lunga: `/money give` = `/qrm admin grant`, `/money take
 
 - I comandi agiscono sul Character **attivo** del Player: con i comandi, un Player senza Character attivo non può pagare né ricevere.
 - Non esiste il cambio tra Currencies.
-- Un Account congelato non muove denaro. I comandi di QRM non congelano gli Accounts dei Characters: lo fa `/bank freeze` del Module `qrm_bank` ([Banca e ATM](banca.md)), oppure l'API.
+- Un Account congelato non muove denaro. I comandi di QRM non congelano gli Accounts dei Characters: lo fa `/bank freeze` del Module `qrm_bank` ([Bank](../modules/bank/comandi.md)), oppure l'API.
 
 ## Related
 
-- [Banca e ATM](banca.md)
+- [Bank](../modules/bank/index.md)
 - [Manutenzione](manutenzione.md)
 - [Economy per sviluppatori](../sviluppatori/servizi/economia.md)

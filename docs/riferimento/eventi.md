@@ -4,7 +4,7 @@ sidebar_label: Eventi
 
 # Eventi
 
-Questa pagina elenca tutti gli eventi di QRM (`dev.qrm.api…`) e del Module banca (`dev.qrm.bank.api`). Come registrare un handler, le priorità e le regole sono in [Eventi](../sviluppatori/eventi.md).
+Questa pagina elenca tutti gli eventi di QRM (`dev.qrm.api…`) e del Module Bank (`dev.qrm.bank.api`). Come registrare un handler, le priorità e le regole sono in [Eventi](../sviluppatori/eventi.md).
 
 **Annullabile** significa che l'evento estende `CancellableEvent`: un handler può chiamare `cancel(by, reason)` e l'azione viene bloccata.
 
@@ -30,7 +30,7 @@ Questa pagina elenca tutti gli eventi di QRM (`dev.qrm.api…`) e del Module ban
 | `OrganizationCreatedEvent` | no | `org` | Dopo la creazione. |
 | `OrganizationArchivedEvent` | no | `org` | Dopo l'archiviazione. |
 
-## Banca (`qrm_bank`)
+## Bank (`qrm_bank`)
 
 | Evento | Annullabile | Campi |
 | --- | --- | --- |
@@ -38,9 +38,9 @@ Questa pagina elenca tutti gli eventi di QRM (`dev.qrm.api…`) e del Module ban
 | `BankDepositEvent` | no | `character`, `amount`, `transaction` |
 | `BankTransferEvent` | no | `from`, `toCharacter`, `toOrganization`, `amount`, `note`, `transaction` |
 
-Per intervenire **prima** di un'operazione della banca usa `TransactionPreEvent` e il `reason` della richiesta (`bank.withdraw`, `bank.deposit`, `bank.transfer`). Vedi [API della banca](../sviluppatori/api-banca.md).
+Per intervenire **prima** di un'operazione di Bank usa `TransactionPreEvent` e il `reason` della richiesta (`bank.withdraw`, `bank.deposit`, `bank.transfer`). Vedi [API di Bank](../modules/bank/api.md).
 
 ## Related
 
 - [Eventi (sviluppatori)](../sviluppatori/eventi.md)
-- [API della banca](../sviluppatori/api-banca.md)
+- [API di Bank](../modules/bank/api.md)

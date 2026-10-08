@@ -28,6 +28,7 @@ QRM fornisce:
 | --- | --- |
 | un server owner | [Server owner](../server-owner/index.md): installazione, configurazione, gestione dei Characters, dei Jobs, delle Organizations e dello staff. |
 | uno sviluppatore | [Sviluppatori](../sviluppatori/index.md): quickstart, servizi dell'API, eventi, Client API. |
+| interessato ai Modules ufficiali | [Modules](../modules/index.md): Bank e i Modules futuri, ognuno con installazione, configurazione, comandi e API. |
 | alla ricerca di una tabella | [Riferimento](../riferimento/index.md): Permissions, eventi, glossario, changelog tecnico. |
 
 Per sapere cosa è il framework e cosa è un Module leggi [Framework e Modules](moduli.md). Per sapere cosa significano le etichette di stato (Stable, Experimental, Planned, Deprecated) leggi [Versioni e stabilità](stabilita.md).

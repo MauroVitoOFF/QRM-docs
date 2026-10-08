@@ -12,9 +12,9 @@ I termini di QRM, in ordine alfabetico. I termini scritti in inglese sono i nomi
 
 **API.** L'interfaccia pubblica di QRM: `qrm-api` (server) e `qrm-client-api` (client).
 
-**ATM.** Lo sportello della banca: il blocco `qrm_bank:atm`.
+**ATM.** Lo sportello di Bank: il blocco `qrm_bank:atm`.
 
-**Cassa (`BANK_VAULT`).** L'Account della banca il cui saldo è esattamente il contante in circolazione.
+**Cassa (`BANK_VAULT`).** L'Account di Bank il cui saldo è esattamente il contante in circolazione.
 
 **Character.** L'identità di gioco di un Player. Un Player ne ha più d'uno e uno solo è attivo; Job, Accounts e Organizations appartengono al Character.
 

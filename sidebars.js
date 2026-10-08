@@ -19,9 +19,21 @@ module.exports = {
         'server-owner/organizzazioni',
         'server-owner/permessi',
         'server-owner/pannello-staff',
-        'server-owner/banca',
         'server-owner/temi',
         'server-owner/manutenzione',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Modules',
+      link: { type: 'doc', id: 'modules/index' },
+      items: [
+        {
+          type: 'category',
+          label: 'Bank',
+          link: { type: 'doc', id: 'modules/bank/index' },
+          items: ['modules/bank/configurazione', 'modules/bank/comandi', 'modules/bank/api'],
+        },
       ],
     },
     {
@@ -47,7 +59,6 @@ module.exports = {
         'sviluppatori/eventi',
         'sviluppatori/client-api',
         'sviluppatori/tema-gui',
-        'sviluppatori/api-banca',
         'sviluppatori/build',
       ],
     },

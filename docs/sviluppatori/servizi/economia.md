@@ -101,12 +101,12 @@ Eventi: `TransactionPreEvent` (annullabile: `request()`, `cancel(...)`, `setAmou
 ## Limitations
 
 - Non esiste un cambio tra Currencies.
-- L'API non ha un'operazione di storno: per annullare un movimento già eseguito si esegue una Transaction inversa (la banca usa il motivo `bank.deposit.revert`).
+- L'API non ha un'operazione di storno: per annullare un movimento già eseguito si esegue una Transaction inversa (Bank usa il motivo `bank.deposit.revert`).
 - Lo spazio delle `idempotencyKey` è unico per tutti i Modules.
 
 ## Related
 
 - [Eventi](../eventi.md)
 - [Organizations](organizzazioni.md): prelievi da un Account di Organization.
-- [API della banca](../api-banca.md)
+- [API di Bank](../../modules/bank/api.md)
 - [Economy per server owner](../../server-owner/economia.md)

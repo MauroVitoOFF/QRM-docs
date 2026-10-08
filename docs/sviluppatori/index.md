@@ -32,7 +32,7 @@ L'API è alla versione `0.x`: può cambiare tra una minor e l'altra. Ogni rimozi
 
 - [Client API](client-api.md): righe HUD, frammenti di tema, widget, voci e azioni del pannello staff.
 - [Tema della GUI](tema-gui.md): il contratto del manifesto per chi crea uno stile.
-- [API della banca](api-banca.md): gli eventi di `qrm_bank`.
+- [Modules ufficiali](../modules/index.md): le API dei Modules, come gli eventi di Bank ([API di Bank](../modules/bank/api.md)).
 - [Build del progetto](build.md): toolchain, comandi Gradle e il Module di esempio.
 
 ## Related

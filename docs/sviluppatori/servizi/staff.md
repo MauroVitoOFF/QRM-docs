@@ -56,7 +56,7 @@ Controllo lato server per una voce del pannello di un Module:
 boolean ok = isOp(player) || QRM.get(StaffAccessService.class).has(player.getUUID(), "staff.module.mymod");
 ```
 
-`isOp` è il controllo del livello *gamemaster* della tua integrazione con NeoForge. **Ricontrolla il nodo a ogni pacchetto** che il tuo Module riceve dal client: il filtro del client è solo comodità. È ciò che fa `StaffBankServer` per la banca.
+`isOp` è il controllo del livello *gamemaster* della tua integrazione con NeoForge. **Ricontrolla il nodo a ogni pacchetto** che il tuo Module riceve dal client: il filtro del client è solo comodità. È ciò che fa `StaffBankServer` per Bank.
 
 ## Limitations
 

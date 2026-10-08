@@ -4,7 +4,7 @@ sidebar_label: Nodi di Permission
 
 # Nodi di Permission
 
-Questa pagina elenca tutti i nodi che QRM e il Module banca riconoscono. Sono due sistemi distinti: i nodi **di gioco** si danno ai Characters, i nodi **staff** agli account. Le regole di forma e di risoluzione sono in [Permissions](../sviluppatori/servizi/permessi.md) e [Staff](../sviluppatori/servizi/staff.md).
+Questa pagina elenca tutti i nodi che QRM e il Module Bank riconoscono. Sono due sistemi distinti: i nodi **di gioco** si danno ai Characters, i nodi **staff** agli account. Le regole di forma e di risoluzione sono in [Permissions](../sviluppatori/servizi/permessi.md) e [Staff](../sviluppatori/servizi/staff.md).
 
 ## Nodi di gioco (per Character)
 

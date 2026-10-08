@@ -14,7 +14,7 @@ Questa pagina elenca cosa introduce ogni versione di QRM. Per i cambi di protoco
 | 0.4 | Fondamenta della GUI: rete, schermata Characters con carta d'identità, asset configurabili da tema. |
 | 0.5 | HUD del Character e hub, configurabili; servizio da hub. |
 | 0.6 | Client API per i Modules (`qrm-client-api`). |
-| 0.7 | Module banca (`qrm-bank`): Account, ATM, contante fisico, bonifici. Poi causale, avvisi e storico con controparte (0.7.1), banconote (0.7.2), testi dello storico (0.7.3). |
+| 0.7 | Module Bank (`qrm-bank`): Account, ATM, contante fisico, bonifici. Poi causale, avvisi e storico con controparte (0.7.1), banconote (0.7.2), testi dello storico (0.7.3). |
 | 0.8 | Menu staff a tessere, poi sostituito; tessera Economy (0.8.1). |
 | 0.9 | Tessera Banca con la gestione del denaro. |
 | 0.10 | Pannello staff HUD con sezioni, scheda Player e azioni, Permissions staff per account. Il vecchio menu staff è rimosso. |
