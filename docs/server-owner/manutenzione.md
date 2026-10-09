@@ -40,6 +40,7 @@ Fai una copia prima di ogni aggiornamento di QRM.
 | Nel log: `Invalid currency file <file>`. | Il file della Currency è invalido e viene scartato. |
 | Nel log: `economy.defaultCurrency 'X' is not a registered currency`. | La Currency indicata in `economy.defaultCurrency` non esiste: l'HUD mostra un'altra Currency come principale. |
 | Un membro dello staff non vede il pannello. | Manca il nodo `staff.panel`. Controlla con `/qrm admin staff list <player>` e concedilo con `/qrm admin staff grant <player> staff.panel`. |
+| Il database cresce per il registro delle azioni staff. | Le voci non scadono mai. Cancella le più vecchie con `/qrm admin log prune <days>`. |
 | Un'azione dello staff o dell'ATM non fa nulla e nel log compare `... failed for <uuid>`. | Errore lato server: l'eccezione è nel log subito sotto il messaggio. |
 | Un Job sparito dai file non dà più Permissions. | È voluto: l'assegnazione resta nel database ma vale solo finché il Job esiste. |
 | `/job`, `/money` o altri comandi brevi fanno un'altra cosa. | Un altro mod usa gli stessi nomi: imposta `commands.shortAliases = false` e usa i comandi `/qrm …`. |
