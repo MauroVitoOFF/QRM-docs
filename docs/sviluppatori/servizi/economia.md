@@ -18,7 +18,7 @@ Tre servizi lavorano insieme: `CurrencyRegistry` (le Currencies), `AccountServic
 
 ### Importi: `Money`
 
-`Money(String currency, long amount)` non accetta importi negativi né Currencies vuote. `plus` e `minus` richiedono la stessa Currency e lanciano `IllegalArgumentException` altrimenti (e se il risultato di `minus` sarebbe negativo).
+`Money(String currency, long amount)` non accetta importi negativi né Currencies vuote. `plus` e `minus` richiedono la stessa Currency e lanciano `IllegalArgumentException` altrimenti (e se il risultato di `minus` sarebbe negativo). `plus` lancia `ArithmeticException` se la somma supera `long`.
 
 ```java
 Money.of("USD", 1250)   // 12,50 USD se la Currency ha 2 decimali

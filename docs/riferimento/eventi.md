@@ -24,6 +24,7 @@ Questa pagina elenca tutti gli eventi di QRM (`dev.qrm.api…`) e del Module Ban
 | `JobChangePreEvent` | **sì** | `character()`, `from()`, `toJobId()`, `toGradeId()` | Prima di un cambio di Job o Grade. |
 | `JobChangedEvent` | no | `character`, `before`, `after` | Dopo il cambio. |
 | `DutyChangedEvent` | no | `character`, `onDuty`, `reason` | Dopo un cambio di servizio. |
+| `MuteChangedEvent` | no | `player` | Dopo `mute` e `unmute` di `ModerationService` (0.13). Non parte quando un mute a tempo scade da solo. |
 | `PermissionChangedEvent` | no | `character`, `node`, `effect` | Dopo la modifica di un override. |
 | `MembershipChangePreEvent` | **sì** | `orgId()`, `character()`, `from()`, `to()` | Prima di un ingresso, cambio Rank o uscita. |
 | `MembershipChangedEvent` | no | `orgId`, `character`, `before`, `after` | Dopo il cambio. |

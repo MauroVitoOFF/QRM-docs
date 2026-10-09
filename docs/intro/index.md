@@ -7,7 +7,7 @@ sidebar_label: Cos'è QRM
 
 QRM è un framework per server roleplay su NeoForge. Questa documentazione è per chi gestisce un server (server owner) e per chi scrive Modules che usano QRM.
 
-Versione documentata: **0.11.0** (Minecraft 26.2, NeoForge 26.2.0.88, Java 25).
+Versione documentata: **0.13.0** (Minecraft 26.2, NeoForge 26.2.0.88, Java 25).
 
 ## Overview
 

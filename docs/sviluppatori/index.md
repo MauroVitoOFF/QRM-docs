@@ -25,7 +25,7 @@ L'API è alla versione `0.x`: può cambiare tra una minor e l'altra. Ogni rimozi
 | [Jobs](servizi/lavori.md) | Definire Jobs e Grades, assegnarli, gestire il servizio. |
 | [Organizations](servizi/organizzazioni.md) | Ranks, membri e Account in comune. |
 | [Permissions](servizi/permessi.md) | Nodi per Character, override e risoluzione. |
-| [Staff](servizi/staff.md) | Le Permissions del pannello staff, per account. |
+| [Staff](servizi/staff.md) | Le Permissions del pannello staff, per account; il registro delle azioni e la moderazione. |
 | [Module data](servizi/dati-mod.md) | JSON persistente per titolare, con il namespace del tuo Module. |
 
 ## Interfaccia e altri Modules

@@ -16,8 +16,8 @@ Un Module con interfaccia dipende da `qrm-api` (server) e da `qrm-client-api`; n
 
 ```groovy
 dependencies {
-    compileOnly 'dev.qrm:qrm-api:0.11.0'
-    compileOnly files('libs/qrm-0.11.0.jar')   // contiene le classi di qrm-client-api
+    compileOnly 'dev.qrm:qrm-api:0.13.0'
+    compileOnly files('libs/qrm-0.13.0.jar')   // contiene le classi di qrm-client-api
 }
 ```
 
@@ -116,7 +116,7 @@ StaffPlayerActions.register(Action.withInput("kick", "my.staff.kick", "staff.pla
 - `Field(labelKey, hintKey, maxLength, required)` descrive un campo di input.
 - `Action.planned(id, labelKey, node, danger)`: l'azione è visibile ma disattivata con l'etichetta "presto". Serve per annunciare funzioni non ancora pronte.
 - Un'azione non può avere insieme scelte e campi.
-- Le dieci azioni di QRM (`teleport_to`, `bring`, `freeze`, `heal`, `give_item`, `set_gamemode`, `kick`, `ban`, `view_character`, `view_permissions`) hanno nodo `staff.player.<id>` e sono eseguite dal server.
+- Le diciassette azioni di QRM (`teleport_to`, `bring`, `freeze`, `heal`, `give_item`, `set_gamemode`, `kick`, `ban`, `view_character`, `view_permissions`, `history`, `mute`, `unmute`, `warn`, `note`, `warnings`, `notes`) sono eseguite dal server. Hanno nodo `staff.player.<id>`, tranne `history`, che usa `staff.logs`.
 - Un'azione informativa (come *View permissions*) fa rispondere il server con righe (chiave di etichetta, valore) e il pannello le mostra in una pagina; `←` la chiude.
 
 ### Permissions

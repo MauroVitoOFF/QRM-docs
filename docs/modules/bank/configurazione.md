@@ -52,7 +52,7 @@ Server e client devono avere lo **stesso `cash.json`**. Gli item dei tagli si re
 | `limits.maxPerDay` | `500000` | Ritiro massimo nelle ultime 24 ore per Character, in unità minime. |
 | `limits.overrides` | vuoto | Limiti per Currency, voci `"CODICE:perOperazione:alGiorno"`, per esempio `"EUR:50000:200000"`. |
 
-Il limite giornaliero somma i ritiri delle ultime 24 ore leggendo le 500 Transactions più recenti dell'Account.
+Il limite giornaliero somma i ritiri delle ultime 24 ore. Dalla 0.13.1 legge lo storico dell'Account finché non supera le 24 ore, fino a 64 000 Transactions; oltre quel numero in un giorno l'Account è considerato al limite. Fino alla 0.13.0 leggeva solo le 500 Transactions più recenti: molti movimenti recenti potevano escludere i ritiri dal conteggio.
 
 ### Permissions
 

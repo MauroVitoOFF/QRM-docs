@@ -68,7 +68,7 @@ QRM.get(StaffLogService.class).record(
 | `about(UUID player, limit)` | Le voci in cui il Player è lo staff o il bersaglio; stessi limiti. |
 | `pruneOlderThan(Instant cutoff)` | Cancella le voci precedenti a `cutoff` e restituisce quante. |
 
-`StaffLogEntry` ha: `id` (progressivo), `at`, `staffId`, `staffName`, `action`, `targetId`, `targetName`, `detail`, `outcome` (`OK` o `DENIED`). `action` è un identificatore libero; QRM usa i prefissi `panel.`, `bank.` e `cmd.`, per i tuoi usa il prefisso del Module.
+`StaffLogEntry` ha: `id` (progressivo), `at`, `staffId`, `staffName`, `action`, `targetId`, `targetName`, `detail`, `outcome` (`OK` o `DENIED`). `action` è un identificatore libero (troncato a 64 caratteri, come i nomi); QRM usa i prefissi `panel.`, `bank.` e `cmd.`, per i tuoi usa il prefisso del Module.
 
 Una scrittura può lanciare se il database è in errore: **non lasciare che blocchi l'azione dello staff**. Cattura l'eccezione, scrivi l'errore nel log e prosegui, come fanno il pannello e Bank. Non registrare le letture.
 

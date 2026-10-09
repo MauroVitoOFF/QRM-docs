@@ -21,5 +21,6 @@ Questa pagina elenca cosa introduce ogni versione di QRM. Per i cambi di protoco
 | 0.11 | Comandi brevi (`/job`, `/duty`, `/money`, `/char`, `/org`, `/perm`), `/duty` a interruttore, completamento con Tab, opzione `commands.shortAliases`. |
 | 0.12 | Registro delle azioni staff: ogni azione che cambia qualcosa è registrata (pannello, Banca, comandi) e consultabile da pannello e da `/qrm admin log`. |
 | 0.13 | Moderazione dal pannello: mute della chat e dei messaggi privati, avvertimenti con storico, note private dello staff. |
+| 0.13.1 | Correzioni: il limite di ritiro giornaliero di Bank non si aggira più con molti movimenti; lo staff delegato non può agire su un operatore. |
 
 Per il significato delle etichette di stato vedi [Versioni e stabilità](stabilita.md).

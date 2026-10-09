@@ -16,7 +16,7 @@ Un Module è un mod NeoForge normale che dichiara QRM come dipendenza e lo usa t
 
 ```groovy
 dependencies {
-    compileOnly 'dev.qrm:qrm-api:0.11.0'
+    compileOnly 'dev.qrm:qrm-api:0.13.0'
     // solo se il Module ha schermate lato client: vedi la nota qui sotto
 }
 ```
@@ -24,7 +24,7 @@ dependencies {
 Usa `compileOnly`: a runtime le librerie le porta già il jar `qrm`, che le contiene (`qrm-api` e `qrm-core` come jar-in-jar, le classi di `qrm-client-api` nel proprio jar).
 
 :::note
-QRM non pubblica ancora gli artefatti su un repository Maven. `qrm-api` si ottiene con `./gradlew publishToMavenLocal` dal progetto QRM. `qrm-client-api` non ha ancora una pubblicazione Maven: le sue classi sono dentro il jar `qrm`, che per le schermate puoi usare in compilazione come file (`compileOnly files('libs/qrm-0.11.0.jar')`).
+QRM non pubblica ancora gli artefatti su un repository Maven. `qrm-api` si ottiene con `./gradlew publishToMavenLocal` dal progetto QRM. `qrm-client-api` non ha ancora una pubblicazione Maven: le sue classi sono dentro il jar `qrm`, che per le schermate puoi usare in compilazione come file (`compileOnly files('libs/qrm-0.13.0.jar')`).
 :::
 
 ### 2. I metadati del mod
@@ -35,7 +35,7 @@ In `META-INF/neoforge.mods.toml` dichiara QRM come dipendenza obbligatoria, cari
 [[dependencies.mymod]]
 modId = "qrm"
 type = "required"
-versionRange = "[0.11.0,)"
+versionRange = "[0.13.0,)"
 ordering = "AFTER"
 side = "BOTH"
 ```

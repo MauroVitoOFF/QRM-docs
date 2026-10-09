@@ -40,7 +40,7 @@ if (perms.has(characterId, "police.arrest")) { /* ... */ }
 | `has(CharacterId, node)` | Il Character ha il nodo? |
 | `effective(CharacterId)` | L'insieme dei nodi effettivi. |
 | `grant`, `deny`, `clear` `(CharacterId, node)` | Imposta o rimuove un override. Un pattern non valido lancia `IllegalArgumentException`. |
-| `overridesOf(CharacterId)` | Gli override, come mappa nodo → `PermissionEffect` (`GRANT`, `DENY`, `CLEARED`). |
+| `overridesOf(CharacterId)` | Gli override, come mappa nodo → `PermissionEffect` (`GRANT` o `DENY`). `CLEARED` compare solo in `PermissionChangedEvent`, quando un override viene rimosso. |
 
 `PermissionChangedEvent(character, node, effect)` parte dopo ogni modifica.
 

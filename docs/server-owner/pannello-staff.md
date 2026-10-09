@@ -76,6 +76,8 @@ Aprendo un Player dalla lista si vedono *Online*, *Character*, *Job* e *Organiza
 | Notes | `staff.player.notes` | Mostra le note dello staff sul Player, dalla più recente (al massimo 60 righe). Dalla 0.13. |
 | History | `staff.logs` | Mostra le azioni del [registro](#registro-delle-azioni) in cui il Player è lo staff o il bersaglio (al massimo 60 righe). Dalla 0.12. |
 
+Dalla 0.13.1 un account che non è operatore non può usare sulla scheda di un operatore le azioni che cambiano qualcosa (Kick, Ban, Mute, Freeze e le altre): il server risponde *senza permesso* e scrive il tentativo nel registro come negato. Le azioni di sola lettura restano disponibili. L'operatore può agire su chiunque.
+
 Le azioni con campi (Give item, Kick, Ban) aprono una finestrella: Invio conferma, Esc annulla, il gioco non va in pausa. L'esito appare sopra la barra dell'inventario.
 
 ### Moderazione
