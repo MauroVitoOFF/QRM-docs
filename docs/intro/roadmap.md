@@ -19,5 +19,6 @@ Questa pagina elenca cosa introduce ogni versione di QRM. Per i cambi di protoco
 | 0.9 | Tessera Banca con la gestione del denaro. |
 | 0.10 | Pannello staff HUD con sezioni, scheda Player e azioni, Permissions staff per account. Il vecchio menu staff è rimosso. |
 | 0.11 | Comandi brevi (`/job`, `/duty`, `/money`, `/char`, `/org`, `/perm`), `/duty` a interruttore, completamento con Tab, opzione `commands.shortAliases`. |
+| 0.12 | Registro delle azioni staff: ogni azione che cambia qualcosa è registrata (pannello, Banca, comandi) e consultabile da pannello e da `/qrm admin log`. |
 
 Per il significato delle etichette di stato vedi [Versioni e stabilità](stabilita.md).

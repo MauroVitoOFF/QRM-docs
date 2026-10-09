@@ -25,6 +25,7 @@ Gli operatori (livello *gamemaster*) hanno ogni nodo. Per gli altri si concedono
 | `staff.panel` | Aprire il pannello staff. |
 | `staff.jobs`, `staff.orgs`, `staff.perms` | Riservati a voci di Jobs, Organizations e Permissions. Oggi nessuna voce di QRM li usa. |
 | `staff.bank` | La voce Banca del pannello. |
+| `staff.logs` | Il registro delle azioni staff: la voce *Ultime azioni* e l'azione *History* (0.12). |
 | `staff.module.<id>` | Le voci aggiunte da un Module. |
 | `staff.player.teleport_to` | Teleport to. |
 | `staff.player.bring` | Bring here. |

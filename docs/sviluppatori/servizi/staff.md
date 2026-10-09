@@ -4,7 +4,7 @@ sidebar_label: Staff
 
 # Staff
 
-Questa pagina documenta `StaffAccessService` e `StaffNodes`: le Permissions del [pannello staff](../../server-owner/pannello-staff.md). È rivolta agli sviluppatori di Modules. Disponibile dalla 0.10.
+Questa pagina documenta `StaffAccessService`, `StaffNodes` e `StaffLogService`: le Permissions del [pannello staff](../../server-owner/pannello-staff.md) e il registro delle azioni staff. È rivolta agli sviluppatori di Modules. Disponibile dalla 0.10; il registro dalla 0.12.
 
 :::caution Experimental
 API `0.x`: può cambiare tra una minor e l'altra.
@@ -43,10 +43,33 @@ Un account ha un insieme di pattern concessi (`staff.*`, `staff.player.kick`, `*
 | `ORGS` | `staff.orgs` |
 | `PERMS` | `staff.perms` |
 | `BANK` | `staff.bank` |
+| `LOGS` | `staff.logs` (0.12) |
 | `MODULE_PREFIX` | `staff.module.` (poi l'id del Module) |
 | `PLAYER_PREFIX` | `staff.player.` (poi l'azione) |
 
 `StaffNodes.matches(pattern, node)` e `matchesAny(patterns, node)` confrontano un nodo con i pattern concessi.
+
+## Registro delle azioni
+
+`StaffLogService` (0.12) è il registro persistente delle azioni staff che cambiano qualcosa. Un Module che aggiunge azioni staff proprie le scrive qui, così compaiono in *Ultime azioni* e in *History*.
+
+```java
+QRM.get(StaffLogService.class).record(
+        Optional.of(staff.getUUID()), staff.getGameProfile().name(),
+        "mymod.reset_stats", Optional.of(target.getUUID()),
+        Optional.of(target.getGameProfile().name()), "stats azzerate", StaffLogEntry.Outcome.OK);
+```
+
+| Metodo | Cosa fa |
+| --- | --- |
+| `record(staffId, staffName, action, targetId, targetName, detail, outcome)` | Scrive una voce con l'istante corrente. `staffId` vuoto = la console. `detail` oltre 256 caratteri viene troncato. |
+| `recent(limit)` | Le voci più recenti per prime; `limit` è limitato a 1–200. |
+| `about(UUID player, limit)` | Le voci in cui il Player è lo staff o il bersaglio; stessi limiti. |
+| `pruneOlderThan(Instant cutoff)` | Cancella le voci precedenti a `cutoff` e restituisce quante. |
+
+`StaffLogEntry` ha: `id` (progressivo), `at`, `staffId`, `staffName`, `action`, `targetId`, `targetName`, `detail`, `outcome` (`OK` o `DENIED`). `action` è un identificatore libero; QRM usa i prefissi `panel.`, `bank.` e `cmd.`, per i tuoi usa il prefisso del Module.
+
+Una scrittura può lanciare se il database è in errore: **non lasciare che blocchi l'azione dello staff**. Cattura l'eccezione, scrivi l'errore nel log e prosegui, come fanno il pannello e Bank. Non registrare le letture.
 
 ## Examples
 
@@ -62,6 +85,7 @@ boolean ok = isOp(player) || QRM.get(StaffAccessService.class).has(player.getUUI
 
 - `staff.jobs`, `staff.orgs` e `staff.perms` sono definiti ma oggi nessuna voce di QRM li usa.
 - Le Permissions sono per account: non esistono per Character.
+- Il registro non ha filtri per data o per azione e non scade da solo: la pulizia è manuale (`/qrm admin log prune <days>`).
 
 ## Related
 
