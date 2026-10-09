@@ -4,7 +4,7 @@ sidebar_label: Staff
 
 # Staff
 
-Questa pagina documenta `StaffAccessService`, `StaffNodes` e `StaffLogService`: le Permissions del [pannello staff](../../server-owner/pannello-staff.md) e il registro delle azioni staff. È rivolta agli sviluppatori di Modules. Disponibile dalla 0.10; il registro dalla 0.12.
+Questa pagina documenta `StaffAccessService`, `StaffNodes`, `StaffLogService` e `ModerationService`: le Permissions del [pannello staff](../../server-owner/pannello-staff.md), il registro delle azioni staff e la moderazione. È rivolta agli sviluppatori di Modules. Disponibile dalla 0.10; il registro dalla 0.12, la moderazione dalla 0.13.
 
 :::caution Experimental
 API `0.x`: può cambiare tra una minor e l'altra.
@@ -44,6 +44,7 @@ Un account ha un insieme di pattern concessi (`staff.*`, `staff.player.kick`, `*
 | `PERMS` | `staff.perms` |
 | `BANK` | `staff.bank` |
 | `LOGS` | `staff.logs` (0.12) |
+| `MODERATION` | `staff.moderation` (0.13) |
 | `MODULE_PREFIX` | `staff.module.` (poi l'id del Module) |
 | `PLAYER_PREFIX` | `staff.player.` (poi l'azione) |
 
@@ -70,6 +71,31 @@ QRM.get(StaffLogService.class).record(
 `StaffLogEntry` ha: `id` (progressivo), `at`, `staffId`, `staffName`, `action`, `targetId`, `targetName`, `detail`, `outcome` (`OK` o `DENIED`). `action` è un identificatore libero; QRM usa i prefissi `panel.`, `bank.` e `cmd.`, per i tuoi usa il prefisso del Module.
 
 Una scrittura può lanciare se il database è in errore: **non lasciare che blocchi l'azione dello staff**. Cattura l'eccezione, scrivi l'errore nel log e prosegui, come fanno il pannello e Bank. Non registrare le letture.
+
+## Moderazione
+
+`ModerationService` (0.13) conserva mute, avvertimenti e note dello staff, legati all'UUID del Player. Un Module può leggerli o scriverli; l'**applicazione** del mute (chat e comandi) la fa QRM.
+
+```java
+ModerationService moderation = QRM.get(ModerationService.class);
+Optional<Mute> mute = moderation.activeMute(player.getUUID());
+int warnings = moderation.warningCount(player.getUUID());
+```
+
+| Metodo | Cosa fa |
+| --- | --- |
+| `mute(player, playerName, staffId, staffName, reason, Optional<Duration>)` | Silenzia il Player, sostituendo un mute precedente. Durata vuota = permanente. |
+| `unmute(player)` | Toglie il mute; `false` se non era silenziato. |
+| `activeMute(player)` | Il mute attivo; un mute scaduto non c'è più. |
+| `activeMutes(limit)` | I mute attivi, anche di Players offline. |
+| `warn(player, playerName, staffId, staffName, reason)` | Registra un avvertimento e restituisce il numero di avvertimenti del Player. |
+| `warningsOf(player, limit)`, `warningCount(player)`, `recentWarnings(limit)` | Lettura degli avvertimenti. |
+| `addNote(player, playerName, staffId, staffName, text)` | Aggiunge una nota. |
+| `notesOf(player, limit)`, `noteCount(player)` | Lettura delle note. |
+
+Motivo e testo vengono troncati (128 e 200 caratteri) e i limiti sono portati a 1–200.
+
+`mute` e `unmute` pubblicano `MuteChangedEvent(UUID player)`: QRM lo ascolta e aggiorna la cache dei mute dei Players online, quindi il mute vale subito anche se lo scrive un Module. Un mute che scade da solo non pubblica l'evento.
 
 ## Examples
 

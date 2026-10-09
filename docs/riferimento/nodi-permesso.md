@@ -26,6 +26,7 @@ Gli operatori (livello *gamemaster*) hanno ogni nodo. Per gli altri si concedono
 | `staff.jobs`, `staff.orgs`, `staff.perms` | Riservati a voci di Jobs, Organizations e Permissions. Oggi nessuna voce di QRM li usa. |
 | `staff.bank` | La voce Banca del pannello. |
 | `staff.logs` | Il registro delle azioni staff: la voce *Ultime azioni* e l'azione *History* (0.12). |
+| `staff.moderation` | Le voci *Mute attivi* e *Ultimi avvertimenti* della sezione *Moderation* (0.13). |
 | `staff.module.<id>` | Le voci aggiunte da un Module. |
 | `staff.player.teleport_to` | Teleport to. |
 | `staff.player.bring` | Bring here. |
@@ -37,6 +38,12 @@ Gli operatori (livello *gamemaster*) hanno ogni nodo. Per gli altri si concedono
 | `staff.player.ban` | Ban. |
 | `staff.player.view_character` | View character. |
 | `staff.player.view_permissions` | View permissions. |
+| `staff.player.mute` | Mute (0.13). |
+| `staff.player.unmute` | Unmute (0.13). |
+| `staff.player.warn` | Warn (0.13). |
+| `staff.player.note` | Note (0.13). |
+| `staff.player.warnings` | Warnings (0.13). |
+| `staff.player.notes` | Notes (0.13). |
 | `staff.player.*` | Tutte le azioni della scheda Player. |
 | `staff.*` | Tutti i nodi staff. |
 

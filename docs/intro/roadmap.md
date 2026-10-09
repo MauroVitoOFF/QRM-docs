@@ -20,5 +20,6 @@ Questa pagina elenca cosa introduce ogni versione di QRM. Per i cambi di protoco
 | 0.10 | Pannello staff HUD con sezioni, scheda Player e azioni, Permissions staff per account. Il vecchio menu staff è rimosso. |
 | 0.11 | Comandi brevi (`/job`, `/duty`, `/money`, `/char`, `/org`, `/perm`), `/duty` a interruttore, completamento con Tab, opzione `commands.shortAliases`. |
 | 0.12 | Registro delle azioni staff: ogni azione che cambia qualcosa è registrata (pannello, Banca, comandi) e consultabile da pannello e da `/qrm admin log`. |
+| 0.13 | Moderazione dal pannello: mute della chat e dei messaggi privati, avvertimenti con storico, note private dello staff. |
 
 Per il significato delle etichette di stato vedi [Versioni e stabilità](stabilita.md).
