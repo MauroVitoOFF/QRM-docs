@@ -4,7 +4,7 @@ sidebar_label: Quickstart
 
 # Quickstart: il tuo primo Module
 
-Questa pagina mostra il minimo necessario per scrivere un Module: la dipendenza, i metadati e un po' di codice. È rivolta a chi sviluppa mod NeoForge. Il Module `qrm-example` del repository è un esempio completo.
+Questa pagina mostra il minimo necessario per scrivere un Module: la dipendenza, i metadati e un po' di codice. È rivolta a chi sviluppa mod NeoForge. Il Module `qrm-bank` del repository è un esempio completo.
 
 ## Overview
 
@@ -64,7 +64,7 @@ Il codice registra una Currency e un handler che scrive nel log ogni Transaction
 
 ### 4. Provalo
 
-Avvia il server di sviluppo del tuo progetto con QRM nel classpath di runtime. In `qrm-example` si fa con `compileOnly project(':qrm-api')` più `runtimeOnly(project(':qrm-neoforge')) { transitive = false }`, poi `./gradlew :qrm-example:runServer`. Vedi [Build del progetto](build.md).
+Avvia il server di sviluppo del tuo progetto con QRM nel classpath di runtime. In `qrm-bank` si fa con `compileOnly project(':qrm-api')` più `runtimeOnly(project(':qrm-neoforge')) { transitive = false }`, poi `./gradlew :qrm-bank:runServer`. Vedi [Build del progetto](build.md).
 
 ## Limitations
 

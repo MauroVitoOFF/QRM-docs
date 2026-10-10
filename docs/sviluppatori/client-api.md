@@ -21,10 +21,10 @@ dependencies {
 }
 ```
 
-`qrm-client-api` non ha ancora una pubblicazione Maven: le sue classi sono dentro il jar `qrm`, che qui usi in compilazione come file. Nel progetto QRM (come in `qrm-example`) è invece un sottoprogetto: `compileOnly project(':qrm-client-api')`. A runtime non vanno aggiunte al tuo mod, perché le porta già il jar `qrm`.
+`qrm-client-api` non ha ancora una pubblicazione Maven: le sue classi sono dentro il jar `qrm`, che qui usi in compilazione come file. Nel progetto QRM (come in `qrm-bank`) è invece un sottoprogetto: `compileOnly project(':qrm-client-api')`. A runtime non vanno aggiunte al tuo mod, perché le porta già il jar `qrm`.
 
 :::warning Solo lato client
-`qrm-client-api` usa classi `net.minecraft.client.*`. **Tutto il codice che la usa deve stare in classi caricate solo sul client** (`@Mod(value = "...", dist = Dist.CLIENT)`), altrimenti il server dedicato fallisce al caricamento. Il Module `qrm-example` mostra lo schema completo (`ExampleClient`, `ExampleScreen`).
+`qrm-client-api` usa classi `net.minecraft.client.*`. **Tutto il codice che la usa deve stare in classi caricate solo sul client** (`@Mod(value = "...", dist = Dist.CLIENT)`), altrimenti il server dedicato fallisce al caricamento. Il Module `qrm-bank` mostra lo schema completo (`dev.qrm.bank.client`).
 :::
 
 ## How it works

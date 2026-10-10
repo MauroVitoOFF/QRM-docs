@@ -14,7 +14,7 @@ Un Module è un mod a sé, con un proprio jar, un proprio `modId` e una propria 
 | --- | --- | --- | --- | --- |
 | [Bank](bank/index.md) | `qrm_bank` | 0.7 | Experimental | Account bancario per Character, ATM, contante fisico e bonifici. |
 
-Oggi l'unico Module ufficiale è Bank. Il Module `qrm-example` non è nell'elenco: è un esempio per chi sviluppa e non va installato su un server di gioco ([Build del progetto](../sviluppatori/build.md)).
+Oggi l'unico Module ufficiale è Bank. Per chi sviluppa è anche il riferimento di un Module che dipende solo da `qrm-api` e `qrm-client-api` ([Build del progetto](../sviluppatori/build.md)).
 
 ## How a Module section is organized
 

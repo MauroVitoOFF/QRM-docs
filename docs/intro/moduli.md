@@ -35,7 +35,6 @@ Un **Module** è un mod a sé, con un proprio jar, un proprio `modId` e una prop
 | Module | Cosa fa |
 | --- | --- |
 | `qrm-bank` (`qrm_bank`) | Il primo Module ufficiale: Account bancario per Character, ATM, contante fisico e bonifici. Facoltativo. |
-| `qrm-example` | Module di esempio per chi sviluppa: registra una Currency, un Job, handler di eventi e un frammento di tema. Non va installato su un server di gioco. |
 
 `qrm-bank` non è quindi una parte del framework: è costruito con gli stessi strumenti che QRM offre a tutti. Per scrivere un Module vedi il [Quickstart](../sviluppatori/quickstart.md).
 
