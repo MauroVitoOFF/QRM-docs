@@ -8,7 +8,7 @@ Questa pagina elenca ciò che conta a chi aggiorna o scrive Modules: il protocol
 
 ## Protocollo di rete
 
-Un client che ha QRM deve avere la stessa versione del protocollo del server, quindi la stessa versione del mod. Un client senza QRM entra comunque. Il protocollo attuale è **12** per `qrm` e **2** per `qrm_bank`.
+Un client che ha QRM deve avere la stessa versione del protocollo del server, quindi la stessa versione del mod. Un client senza QRM entra comunque. Il protocollo attuale è **12** per `qrm`, **2** per `qrm_bank` e **1** per `qrm_locker`.
 
 | Versione del mod | Cambio | Protocollo `qrm` |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ Un client che ha QRM deve avere la stessa versione del protocollo del server, qu
 | 0.13 | Moderazione: azioni Mute, Unmute, Warn, Note, Warnings, Notes; stato di moderazione nello snapshot dei Players; pagine generiche (registro, mute, avvertimenti). | 11 |
 | 0.14 | Punti di interazione: il server invia a ogni Player l'elenco dei punti che può vedere. | 12 |
 
-Il protocollo di Bank è alla versione 2 dalla 0.9 (tessera Banca nel menu staff, poi voce del pannello).
+Il protocollo di Bank è alla versione 2 dalla 0.9 (tessera Banca nel menu staff, poi voce del pannello). Il protocollo di Locker è alla versione 1 dalla 0.15; il canale è facoltativo.
 
 ## Cambi di compatibilità dell'API
 
@@ -32,6 +32,7 @@ Il protocollo di Bank è alla versione 2 dalla 0.9 (tessera Banca nel menu staff
 - **0.13:** `ModerationService`, `Mute`, `Warning`, `StaffNote` e `MuteChangedEvent` entrano in `qrm-api`; `StaffNodes.MODERATION`. Nessun cambio che rompa la compatibilità. Il database passa alla versione di schema 6 (tabelle `qrm_mute`, `qrm_warning`, `qrm_staff_note`).
 - **0.13.1:** nessun cambio all'API né al protocollo né allo schema. Cambia il comportamento: le azioni del pannello che modificano lo stato rifiutano un bersaglio operatore se chi agisce non lo è, e il limite giornaliero di Bank considera tutte le Transactions delle ultime 24 ore.
 - **0.14:** `PointTypeRegistry`, `PointService`, `PointType`, `PointHandler`, `InteractionPoint` e gli eventi `PointCreatedEvent`, `PointChangedEvent`, `PointRemovedEvent` entrano in `qrm-api` (pacchetto `dev.qrm.api.point`). Nessun cambio che rompa la compatibilità: `JobDefinition` e gli altri tipi non cambiano. Il database passa alla versione di schema 8 (tabella `qrm_interaction_point`, con la colonna `face`).
+- **0.15:** nessun cambio a `qrm-api`, al protocollo di `qrm` né allo schema del database (la versione dell'API sale solo per restare allineata). Entra il Module `qrm_locker`, che salva i dati in `qrm_mod_data` con il namespace `qrm_locker`.
 
 ## Related
 

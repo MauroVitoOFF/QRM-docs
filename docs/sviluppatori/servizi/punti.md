@@ -103,7 +103,7 @@ public final class MyMod {
 }
 ```
 
-Un armadietto condiviso salva i dati con chiave il **proprietario** (`use.point().owner()`), non l'id del punto: più punti dello stesso proprietario aprono lo stesso deposito, e spostare un punto non perde nulla. Per salvare i dati usa `ModDataService`.
+Un armadietto condiviso salva i dati con chiave il **proprietario** (`use.point().owner()`), non l'id del punto: più punti dello stesso proprietario aprono lo stesso deposito, e spostare un punto non perde nulla. Per salvare i dati usa `ModDataService`. Il Module [Locker](../../modules/locker/index.md) è un esempio completo: un armadietto per Character e proprietario, su un baule vanilla, con salvataggio a fine tick.
 
 ## Limitations
 

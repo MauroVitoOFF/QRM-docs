@@ -14,7 +14,7 @@ La funzione è nuova: i comandi e il comportamento possono cambiare tra una mino
 
 Un **punto di interazione** è un blocco esistente (di vanilla o di un altro mod) marcato dallo staff. Il blocco non cambia: cambia ciò che succede al click destro. Il punto appartiene a un Job o a un'Organization; solo i Characters autorizzati lo usano.
 
-QRM include un solo tipo di punto, `duty`: un click inverte il servizio del Character. Gli altri tipi (armadietti, depositi, gestione del personale) li aggiungono i Modules. Vedi [Punti di interazione per sviluppatori](../sviluppatori/servizi/punti.md).
+QRM include un solo tipo di punto, `duty`: un click inverte il servizio del Character. Gli altri tipi li aggiungono i Modules: il Module [Locker](../modules/locker/index.md) (dalla 0.15) aggiunge `locker`, un armadietto personale per Character. Depositi condivisi e gestione del personale non sono ancora disponibili. Vedi [Punti di interazione per sviluppatori](../sviluppatori/servizi/punti.md).
 
 ## How it works
 
@@ -99,7 +99,7 @@ Un click inverte il servizio e il Player riceve «Sei in servizio.» o «Sei fuo
 
 ## Limitations
 
-- Il tipo `duty` è l'unico incluso. Armadietti, depositi e gestione del personale non sono ancora disponibili.
+- Il tipo `duty` è l'unico incluso in QRM. Il tipo `locker` arriva con il Module Locker. Depositi condivisi e gestione del personale non sono ancora disponibili.
 - Un tipo di punto accetta solo i proprietari che dichiara: `duty` accetta solo Jobs.
 - L'icona si disegna solo sulle facce laterali e solo per il tipo `duty` ha una grafica propria; gli altri tipi usano un'icona generica.
 - Non c'è una schermata staff per i punti: si usano i comandi.

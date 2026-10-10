@@ -35,6 +35,12 @@ module.exports = {
           link: { type: 'doc', id: 'modules/bank/index' },
           items: ['modules/bank/configurazione', 'modules/bank/comandi', 'modules/bank/api'],
         },
+        {
+          type: 'category',
+          label: 'Locker',
+          link: { type: 'doc', id: 'modules/locker/index' },
+          items: ['modules/locker/api'],
+        },
       ],
     },
     {

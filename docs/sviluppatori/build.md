@@ -54,6 +54,9 @@ dependencies {
 ./gradlew build                    # compila e testa tutti i sottoprogetti
 ./gradlew :qrm-bank:runServer      # server di sviluppo con il Module Bank
 ./gradlew :qrm-bank:runClient      # client di sviluppo con il Module Bank
+./gradlew :qrm-locker:runServer    # server di sviluppo con il Module Locker (0.15)
+./gradlew :qrm-dev:runServer       # server di sviluppo con QRM e tutti i Modules insieme (0.15)
+./gradlew :qrm-dev:runClient       # client di sviluppo con QRM e tutti i Modules (0.15)
 ./gradlew :qrm-neoforge:runServer   # server di sviluppo di QRM, con valuta e Jobs di prova (0.14)
 ./gradlew :qrm-neoforge:runClient   # client di sviluppo di QRM (0.14)
 ./gradlew :qrm-api:japicmp -PapiBaseline=<versione>   # compatibilità binaria dell'API
