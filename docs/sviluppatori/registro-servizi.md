@@ -23,8 +23,8 @@ Alcuni servizi esistono prima del server, gli altri nascono quando il Core apre 
 
 | Servizio | Disponibile |
 | --- | --- |
-| `EventBus`, `CurrencyRegistry`, `JobRegistry` | Già nel costruttore del tuo mod (li registra il costruttore del mod QRM). |
-| `PlayerService`, `CharacterService`, `AccountService`, `TransactionService`, `AuditService`, `ModDataService`, `JobService`, `PermissionService`, `OrganizationService`, `OrganizationBankService`, `StaffAccessService`, `StaffLogService` (0.12), `ModerationService` (0.13) | All'avvio del server, quando il Core registra i servizi. Subito dopo viene pubblicato `QrmReadyEvent`. |
+| `EventBus`, `CurrencyRegistry`, `JobRegistry`, `PointTypeRegistry` (0.14) | Già nel costruttore del tuo mod (li registra il costruttore del mod QRM). |
+| `PlayerService`, `CharacterService`, `AccountService`, `TransactionService`, `AuditService`, `ModDataService`, `JobService`, `PermissionService`, `OrganizationService`, `OrganizationBankService`, `StaffAccessService`, `StaffLogService` (0.12), `ModerationService` (0.13), `PointService` (0.14) | All'avvio del server, quando il Core registra i servizi. Subito dopo viene pubblicato `QrmReadyEvent`. |
 
 Chiamare uno di questi servizi prima dell'avvio del server lancia `IllegalStateException`.
 

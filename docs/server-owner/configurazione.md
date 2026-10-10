@@ -19,7 +19,7 @@ Le modifiche si applicano al riavvio.
 | `characters.namePattern` | `^[\p{L}][\p{L}' -]*$` | Espressione regolare valida per nome e cognome. |
 | `characters.uniqueNames` | `true` | Rifiuta nomi completi già in uso. |
 | `economy.defaultCurrency` | `QRM` | Currency usata dai comandi quando non specificata e mostrata nell'HUD. |
-| `jobs.selfDuty` | `true` | I Players entrano ed escono di servizio da soli (`/duty`, pulsante dell'hub). Se `false` lo cambiano solo i Modules; il logout mette comunque fuori servizio. |
+| `jobs.selfDuty` | `true` | I Players entrano ed escono di servizio da soli (`/duty`, pulsante dell'hub). Se `false` lo cambiano solo i Modules (e i punti `duty`); il logout mette comunque fuori servizio. |
 | `commands.shortAliases` | `true` | Registra le forme brevi `/job`, `/duty`, `/money` (`/balance`, `/bal`, `/pay`), `/char`, `/org` e `/perm`, oltre ai comandi `/qrm`. Disponibile dalla 0.11. Metti `false` se un altro mod usa gli stessi nomi. Si applica al riavvio o con `/reload`. |
 | `gui.hub.tabs` | `accounts`, `job`, `orgs` | Schede dell'hub, nell'ordine indicato. Elenco vuoto = hub non disponibile. |
 | `gui.hud.elements` | `name`, `balance`, `job` | Righe dell'HUD nell'ordine indicato; i Modules aggiungono le proprie (per esempio `bank:debt`). Elenco vuoto = HUD nascosto. |

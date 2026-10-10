@@ -55,8 +55,14 @@ dependencies {
 ./gradlew build                    # compila e testa tutti i sottoprogetti
 ./gradlew :qrm-example:runServer   # server di sviluppo con il Module di esempio
 ./gradlew :qrm-example:runClient   # client di sviluppo
+./gradlew :qrm-neoforge:runServer   # server di sviluppo di QRM, con valuta e Jobs di prova (0.14)
+./gradlew :qrm-neoforge:runClient   # client di sviluppo di QRM (0.14)
 ./gradlew :qrm-api:japicmp -PapiBaseline=<versione>   # compatibilità binaria dell'API
 ```
+
+Con `runClient` senza il prefisso del sottoprogetto Gradle avvia il client di ogni sottoprogetto che lo definisce: indica sempre `:qrm-neoforge:` o `:qrm-example:`.
+
+Dalla 0.14 il server di sviluppo di `qrm-neoforge` legge la tastiera: si scrivono i comandi nella finestra da cui è stato avviato (`./gradlew :qrm-neoforge:runServer --console=plain`). Prima dell'avvio il task `seedDevData` copia in `run/world/qrm/data` la valuta e i Jobs di prova che stanno in `qrm-neoforge/dev-data`, senza sovrascrivere i file già presenti.
 
 :::warning Evita `clean`
 `./gradlew clean` cancella i file degli argomenti di avvio generati da ModDevGradle (`build/moddev/...RunVmArgs.txt`), e gli avvii dall'IDE falliscono finché non li rigeneri con `./gradlew :qrm-example:prepareClientRun :qrm-example:prepareServerRun`. Per una build da zero preferisci `./gradlew build --rerun-tasks`.

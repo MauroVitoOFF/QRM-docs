@@ -14,7 +14,7 @@ Un Character ha al massimo **un Job** con un **Grade**, e può essere **in servi
 
 - Ogni Grade **eredita** i Permissions dei Grades con `level` inferiore dello stesso Job.
 - Il Character va fuori servizio al logout e quando il Player seleziona un altro Character.
-- Se `jobs.selfDuty` è `false`, solo i Modules cambiano lo stato di servizio.
+- Se `jobs.selfDuty` è `false`, solo i Modules cambiano lo stato di servizio. Un [punto di interazione](punti-di-interazione.md) di tipo `duty` resta utilizzabile.
 - Se un Job sparisce dai file, l'assegnazione resta nel database ma non dà Permissions finché il Job non torna.
 - Un Job può dichiarare `"org": "<id>"` per collegarsi a un'[Organization](organizzazioni.md): chi lo ha, in servizio, è membro implicito.
 
@@ -55,6 +55,7 @@ I sottocomandi per operatori non compaiono agli altri Players. Restano validi i 
 ## Related
 
 - [Organizations](organizzazioni.md)
+- [Punti di interazione](punti-di-interazione.md)
 - [Permissions](permessi.md)
 - [Configurazione](configurazione.md)
 - [Jobs per sviluppatori](../sviluppatori/servizi/lavori.md)

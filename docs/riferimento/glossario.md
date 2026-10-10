@@ -22,6 +22,10 @@ I termini di QRM, in ordine alfabetico. I termini scritti in inglese sono i nomi
 
 **Currency.** Una valuta, con codice, simbolo e decimali.
 
+**Interaction Point (punto di interazione).** Un blocco esistente marcato dallo staff, che appartiene a un Job o a un'Organization e che i Characters autorizzati usano con il click destro. Vedi [Punti di interazione](../server-owner/punti-di-interazione.md).
+
+**Point type (tipo di punto).** Ciò che fa un punto: il Module registra un `PointType` con la logica del click. QRM include `duty`.
+
 **Duty (servizio).** Se il Character è in servizio o no. I Permissions del Job valgono solo in servizio.
 
 **Framework.** Le parti di QRM dentro il jar `qrm`: `qrm-api`, `qrm-core`, `qrm-client-api`, `qrm-neoforge`. Vedi [Framework e Modules](../intro/moduli.md).

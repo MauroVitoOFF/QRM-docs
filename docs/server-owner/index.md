@@ -16,6 +16,7 @@ Questa sezione descrive come installare, configurare e gestire QRM su un server.
 | [Economy](economia.md) | Currencies, Accounts, pagamenti e audit. |
 | [Jobs](lavori.md) | Definire Jobs e Grades, assegnarli, gestire il servizio. |
 | [Organizations](organizzazioni.md) | Creare Organizations, Ranks e membri. |
+| [Punti di interazione](punti-di-interazione.md) | Marcare blocchi del mondo come punti di un Job o di un'Organization, con il servizio dal blocco. |
 | [Permissions](permessi.md) | Nodi, override e comandi. |
 | [Pannello staff](pannello-staff.md) | Il pannello in overlay e le Permissions dello staff. |
 | [Temi](temi.md) | Cambiare l'aspetto della GUI con un resource pack. |
