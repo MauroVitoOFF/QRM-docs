@@ -50,12 +50,15 @@ Richiede il nodo `org.account.withdraw` (`OrganizationBankService.WITHDRAW_NODE`
 | Metodo di `OrganizationService` | Cosa fa |
 | --- | --- |
 | `create(id, label)`, `find(id)`, `all()`, `archive(id)` | Ciclo di vita. |
+| `unarchive(id)` | Riattiva un'Organization archiviata e scongela l'Account. Idempotente (0.18). |
+| `rename(id, newId, newLabel)` | Cambia id ed, eventualmente, etichetta (`null` la lascia com'è); anche su Organizations archiviate. Ranks, membri, Account e punti seguono; l'id vecchio torna libero. Lancia `IllegalArgumentException` se `newId` o `newLabel` sono malformati (0.17). |
+| `delete(id)` | Elimina un'Organization archiviata, senza membri e con l'Account a saldo zero (0.17). |
 | `defineRank(orgId, Rank)`, `removeRank(orgId, rankId)`, `ranksOf(orgId)` | Gestione dei Ranks. |
 | `addMember(orgId, character, rankId)`, `setRank(...)`, `removeMember(...)` | Gestione dei membri. |
 | `membersOf(orgId)`, `organizationsOf(character)` | Interrogazioni. |
 | `can(character, orgId, node)` | Il Character ha quel nodo nell'Organization? **Solo nodi esatti, mai jolly.** |
 
-I metodi che possono fallire restituiscono `OrgResult<T>`, **sealed**: `Ok(value)` o `Failed(OrgError)`. Gli errori sono `UnknownOrg`, `Archived`, `Exists`, `UnknownRank`, `RankInUse`, `LevelTaken`, `UnknownCharacter`, `NotUsable`, `AlreadyMember`, `NotMember`, `Cancelled`.
+I metodi che possono fallire restituiscono `OrgResult<T>`, **sealed**: `Ok(value)` o `Failed(OrgError)`. Gli errori sono `UnknownOrg`, `Archived`, `NotArchived` (0.17), `NotEmpty` (0.17), `Exists`, `UnknownRank`, `RankInUse`, `LevelTaken`, `UnknownCharacter`, `NotUsable`, `AlreadyMember`, `NotMember`, `Cancelled`.
 
 ### Eventi
 
@@ -64,10 +67,14 @@ I metodi che possono fallire restituiscono `OrgResult<T>`, **sealed**: `Ok(value
 | `MembershipChangePreEvent` (annullabile) | Prima di ogni ingresso, cambio Rank o uscita: `orgId()`, `character()`, `from()`, `to()`. |
 | `MembershipChangedEvent(orgId, character, before, after)` | Dopo il cambio. |
 | `OrganizationCreatedEvent(org)`, `OrganizationArchivedEvent(org)` | Dopo creazione e archiviazione. |
+| `OrganizationUnarchivedEvent(org)` | Dopo la riattivazione (0.18). |
 
 ## Limitations
 
-- Le Organizations non si cancellano e non si definiscono da file.
+- Le Organizations non si definiscono da file.
+- `rename` e `delete` non emettono eventi.
+- `rename` non aggiorna i Jobs configurati: `JobDefinition.orgId()` resta quello del file.
+- `delete` lascia l'Account congelato per lo storico delle Transactions, sganciato dall'id.
 - Il Core non paga stipendi dall'Account dell'Organization: lo fa un Module.
 - `can` non accetta pattern.
 

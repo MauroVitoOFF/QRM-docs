@@ -33,6 +33,7 @@ Questa pagina elenca tutti gli eventi di QRM (`dev.qrm.api…`) e del Module Ban
 | `MembershipChangedEvent` | no | `orgId`, `character`, `before`, `after` | Dopo il cambio. |
 | `OrganizationCreatedEvent` | no | `org` | Dopo la creazione. |
 | `OrganizationArchivedEvent` | no | `org` | Dopo l'archiviazione. |
+| `OrganizationUnarchivedEvent` | no | `org` | Dopo la riattivazione (0.18). |
 
 ## Bank (`qrm_bank`)
 

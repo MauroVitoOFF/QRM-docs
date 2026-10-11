@@ -13,7 +13,8 @@ Un'Organization ha un id, un'etichetta, dei **Ranks** (con livello e Permissions
 ## How it works
 
 - Le Organizations si creano solo a runtime (comandi o API), non da file.
-- Non si cancellano: si **archiviano** e il loro Account viene congelato.
+- Si **archiviano** e il loro Account viene congelato; un'Organization archiviata si può riattivare (0.18). Si eliminano solo se archiviate, senza membri e con l'Account a saldo zero (0.17).
+- Si rinominano cambiando l'id: Ranks, membri, Account e punti di interazione seguono la nuova Organization (0.17).
 - I Ranks ereditano i Permissions dei Ranks con `level` inferiore della stessa Organization.
 - Il Permission `org.account.withdraw` controlla i prelievi dall'Account dell'Organization.
 - Un [Job](lavori.md) può collegarsi a un'Organization (`"org": "<id>"`): chi ha quel Job, in servizio, è membro implicito e usa i Permissions del proprio Grade.
@@ -25,7 +26,10 @@ Un'Organization ha un id, un'etichetta, dei **Ranks** (con livello e Permissions
 | `/org` (o `/org list`) | Players | Elenca le Organizations del Character attivo. |
 | `/org info <org>` | membri e operatori | Mostra i dettagli dell'Organization. |
 | `/org create <id> <label>` | operatori | Crea un'Organization. |
-| `/org archive <id>` | operatori | Archivia l'Organization. |
+| `/org archive <id>` | operatori | Archivia l'Organization e congela l'Account. |
+| `/org unarchive <id>` | operatori | Riattiva un'Organization archiviata e scongela l'Account (0.18). |
+| `/org rename <id> <newId> [label]` | operatori | Cambia l'id e, se indicata, l'etichetta. Funziona anche su Organizations archiviate (0.17). |
+| `/org delete <id>` | operatori | Elimina un'Organization archiviata, senza membri e con l'Account a saldo zero (0.17). |
 | `/org rank set <org> <rank> <level> [nodes…]` | operatori | Crea o modifica un Rank. L'etichetta coincide con l'id. |
 | `/org rank remove <org> <rank>` | operatori | Rimuove un Rank. |
 | `/org member add <org> <player> <rank>` | operatori | Aggiunge un membro. |
@@ -36,7 +40,9 @@ Il Tab propone le Organizations esistenti e i loro Ranks. I sottocomandi per ope
 
 ## Limitations
 
-- Le Organizations non si cancellano e non si definiscono da file.
+- Le Organizations non si definiscono da file.
+- `/org delete` non è reversibile. Rimuove l'Organization, i suoi Ranks e i suoi punti di interazione; l'Account resta congelato per lo storico delle Transactions ma non è più collegato all'id, che torna libero.
+- `/org rename` non modifica i [Jobs](lavori.md) definiti nei file: il campo `"org"` resta quello scritto, da aggiornare a mano.
 - Con `/org rank set` l'etichetta del Rank coincide con l'id; per un'etichetta leggibile serve l'API.
 - Il Core non paga stipendi dall'Account dell'Organization: lo fa un Module.
 - Il pannello staff non ha una schermata per le Organizations: si usano i comandi.

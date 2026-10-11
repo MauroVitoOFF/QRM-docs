@@ -24,5 +24,7 @@ Questa pagina elenca cosa introduce ogni versione di QRM. Per i cambi di protoco
 | 0.13.1 | Correzioni: il limite di ritiro giornaliero di Bank non si aggira più con molti movimenti; lo staff delegato non può agire su un operatore. |
 | 0.14 | Punti di interazione: lo staff marca un blocco esistente e un Job o un'Organization vi offre una funzionalità. Include il tipo `duty` (entrare e uscire di servizio dal blocco), l'icona sul blocco e l'API per i Modules. |
 | 0.15 | Module Locker (`qrm-locker`): un armadietto personale per Character nei punti di interazione di tipo `locker`. Nessuna modifica a Core e API. |
+| 0.17 | Organizations: `/org rename` cambia l'id, `/org delete` elimina un'Organization archiviata, vuota e a saldo zero. |
+| 0.18 | Organizations: `/org unarchive` riattiva un'Organization archiviata e scongela l'Account. |
 
 Per il significato delle etichette di stato vedi [Versioni e stabilità](stabilita.md).

@@ -33,6 +33,8 @@ Il protocollo di Bank è alla versione 2 dalla 0.9 (tessera Banca nel menu staff
 - **0.13.1:** nessun cambio all'API né al protocollo né allo schema. Cambia il comportamento: le azioni del pannello che modificano lo stato rifiutano un bersaglio operatore se chi agisce non lo è, e il limite giornaliero di Bank considera tutte le Transactions delle ultime 24 ore.
 - **0.14:** `PointTypeRegistry`, `PointService`, `PointType`, `PointHandler`, `InteractionPoint` e gli eventi `PointCreatedEvent`, `PointChangedEvent`, `PointRemovedEvent` entrano in `qrm-api` (pacchetto `dev.qrm.api.point`). Nessun cambio che rompa la compatibilità: `JobDefinition` e gli altri tipi non cambiano. Il database passa alla versione di schema 8 (tabella `qrm_interaction_point`, con la colonna `face`).
 - **0.15:** nessun cambio a `qrm-api`, al protocollo di `qrm` né allo schema del database (la versione dell'API sale solo per restare allineata). Entra il Module `qrm_locker`, che salva i dati in `qrm_mod_data` con il namespace `qrm_locker`.
+- **0.17:** `OrganizationService` ha due metodi in più, `rename` e `delete`, e `OrgError` due varianti, `NotArchived` e `NotEmpty`. Chi implementa `OrganizationService` o fa uno `switch` esaustivo su `OrgError` deve adeguarsi. Nessun cambio al protocollo né allo schema del database.
+- **0.18:** `OrganizationService.unarchive` e `OrganizationUnarchivedEvent` entrano in `qrm-api`. Chi implementa `OrganizationService` deve aggiungere il metodo. Nessun cambio al protocollo né allo schema del database.
 
 ## Related
 
