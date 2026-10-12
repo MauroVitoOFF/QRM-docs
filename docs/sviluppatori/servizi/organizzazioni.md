@@ -19,7 +19,7 @@ Un'Organization ha un id, un'etichetta, dei **Ranks** (con livello e Permissions
 - Le Organizations si creano solo a runtime (API o comandi), non da file, e non si cancellano: si **archiviano** e il loro Account viene congelato.
 - I Ranks **ereditano** i Permissions dei Ranks con `level` inferiore della stessa Organization. `*` e `x.*` sono ammessi nei Ranks.
 - Il nodo `org.account.withdraw` ha un significato definito dal Core (prelievo dall'Account). Per convenzione i nodi `org.*` sono riservati al Core: i tuoi Modules usano il proprio prefisso.
-- Un Job può dichiarare `"org": "<id>"` (nel file JSON o con `new JobDefinition(id, label, grades, orgId)`). Chi ha quel Job, **in servizio**, è membro **implicito**: `can` usa i nodi del suo Grade (`PermissionService.has`). I membri impliciti non compaiono in `membersOf` ma sì in `organizationsOf`. L'Organization indicata può non esistere ancora quando il Job viene registrato.
+- Un Job può avere un `orgId` (`new JobDefinition(id, label, grades, orgId)`). I Jobs caricati dai file JSON lo hanno sempre, uguale al proprio id (0.19), e all'avvio il Core crea l'Organization se manca e ne allinea l'etichetta. Chi ha quel Job, **in servizio**, è membro **implicito**: `can` usa i nodi del suo Grade (`PermissionService.has`). I membri impliciti non compaiono in `membersOf` ma sì in `organizationsOf`. Per un Job registrato da un Module l'Organization non viene creata da sola, a meno che non sia nei file.
 
 ## Usage
 

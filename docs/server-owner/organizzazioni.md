@@ -12,12 +12,12 @@ Un'Organization ha un id, un'etichetta, dei **Ranks** (con livello e Permissions
 
 ## How it works
 
-- Le Organizations si creano solo a runtime (comandi o API), non da file.
+- Ogni [Job](lavori.md) ha un'Organization con il proprio id, creata all'avvio se manca (0.19). Le altre Organizations (gang, aziende dei Players) si creano a runtime con `/org create` o con l'API, non da file.
 - Si **archiviano** e il loro Account viene congelato; un'Organization archiviata si può riattivare (0.18). Si eliminano solo se archiviate, senza membri e con l'Account a saldo zero (0.17).
-- Si rinominano cambiando l'id: Ranks, membri, Account e punti di interazione seguono la nuova Organization (0.17).
+- L'Organization di un Job ne segue l'etichetta: cambiala nel file del Job e riavvia. L'id non si cambia (0.19: `/org rename` è stato rimosso).
 - I Ranks ereditano i Permissions dei Ranks con `level` inferiore della stessa Organization.
 - Il Permission `org.account.withdraw` controlla i prelievi dall'Account dell'Organization.
-- Un [Job](lavori.md) può collegarsi a un'Organization (`"org": "<id>"`): chi ha quel Job, in servizio, è membro implicito e usa i Permissions del proprio Grade.
+- Chi ha il [Job](lavori.md) di un'Organization, in servizio, è membro implicito e usa i Permissions del proprio Grade. Non serve un Rank né `/org member add`.
 
 ## Usage
 
@@ -28,7 +28,6 @@ Un'Organization ha un id, un'etichetta, dei **Ranks** (con livello e Permissions
 | `/org create <id> <label>` | operatori | Crea un'Organization. |
 | `/org archive <id>` | operatori | Archivia l'Organization e congela l'Account. |
 | `/org unarchive <id>` | operatori | Riattiva un'Organization archiviata e scongela l'Account (0.18). |
-| `/org rename <id> <newId> [label]` | operatori | Cambia l'id e, se indicata, l'etichetta. Funziona anche su Organizations archiviate (0.17). |
 | `/org delete <id>` | operatori | Elimina un'Organization archiviata, senza membri e con l'Account a saldo zero (0.17). |
 | `/org rank set <org> <rank> <level> [nodes…]` | operatori | Crea o modifica un Rank. L'etichetta coincide con l'id. |
 | `/org rank remove <org> <rank>` | operatori | Rimuove un Rank. |
@@ -36,13 +35,14 @@ Un'Organization ha un id, un'etichetta, dei **Ranks** (con livello e Permissions
 | `/org member setrank <org> <player> <rank>` | operatori | Cambia il Rank di un membro. |
 | `/org member remove <org> <player>` | operatori | Rimuove un membro. |
 
-Il Tab propone le Organizations esistenti e i loro Ranks. I sottocomandi per operatori non compaiono agli altri Players. Restano validi anche `/qrm org list|info` e `/qrm admin org …`.
+Il Tab propone le Organizations esistenti e i loro Ranks. I sottocomandi per operatori non compaiono agli altri Players. `/qrm org` ha gli stessi sottocomandi di `/org`.
 
 ## Limitations
 
-- Le Organizations non si definiscono da file.
+- Le Organizations dei Jobs nascono dai file dei Jobs; le altre non si definiscono da file.
 - `/org delete` non è reversibile. Rimuove l'Organization, i suoi Ranks e i suoi punti di interazione; l'Account resta congelato per lo storico delle Transactions ma non è più collegato all'id, che torna libero.
-- `/org rename` non modifica i [Jobs](lavori.md) definiti nei file: il campo `"org"` resta quello scritto, da aggiornare a mano.
+- Se togli un Job dai file, la sua Organization resta com'è: per eliminarla serve archiviarla e poi `/org delete`.
+- Se archivi l'Organization di un Job ancora definito, il Job non dà più Permissions dell'Organization finché non la riattivi con `/org unarchive`; all'avvio compare un avviso.
 - Con `/org rank set` l'etichetta del Rank coincide con l'id; per un'etichetta leggibile serve l'API.
 - Il Core non paga stipendi dall'Account dell'Organization: lo fa un Module.
 - Il pannello staff non ha una schermata per le Organizations: si usano i comandi.

@@ -41,7 +41,7 @@ Il `code` è `[A-Z0-9_]{2,16}` e `decimals` va da 0 a 8. La Currency principale,
 
 Se non indichi la Currency si usa `economy.defaultCurrency`; il Tab propone le Currencies esistenti. I sottocomandi per operatori non compaiono agli altri Players.
 
-Equivalenze con la forma lunga: `/money give` = `/qrm admin grant`, `/money take` = `/qrm admin take`, `/money pay` = `/qrm pay`.
+La forma lunga ha gli stessi sottocomandi: `/qrm money give|take|pay`. I vecchi `/qrm admin grant` e `/qrm admin take` non esistono più (0.19).
 
 "Operatore" è chi ha il livello di comando *gamemaster* di Minecraft, lo stesso richiesto da tutto il ramo `/qrm admin`.
 

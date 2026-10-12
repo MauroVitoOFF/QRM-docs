@@ -16,13 +16,14 @@ Un Character ha al massimo **un Job** con un **Grade**, e può essere **in servi
 - Il Character va fuori servizio al logout e quando il Player seleziona un altro Character.
 - Se `jobs.selfDuty` è `false`, solo i Modules cambiano lo stato di servizio. Un [punto di interazione](punti-di-interazione.md) di tipo `duty` resta utilizzabile.
 - Se un Job sparisce dai file, l'assegnazione resta nel database ma non dà Permissions finché il Job non torna.
-- Un Job può dichiarare `"org": "<id>"` per collegarsi a un'[Organization](organizzazioni.md): chi lo ha, in servizio, è membro implicito.
+- Ogni Job ha la sua [Organization](organizzazioni.md), con lo stesso id: all'avvio il Core la crea se manca. Chi ha il Job, in servizio, è membro implicito e usa i Permissions del proprio Grade, quindi basta un Grade con `boss.*` e `org.account.*` per fare di un Player il capo, senza `/org create` né `/org member add`.
+- Se cambi l'etichetta del Job, quella dell'Organization si aggiorna al riavvio. Se togli il Job dai file, l'Organization resta (con Ranks, membri e Account) e in console compare un avviso se c'erano Characters assegnati.
 
 ## Usage
 
 ### Definire un Job
 
-Un file per Job in `<world>/qrm/data/jobs/<id>.json`:
+Un file per Job in `<world>/qrm/data/jobs/<id>.json`. La chiave `"org"` delle versioni precedenti non serve più: se c'è, viene ignorata con un avviso nel log.
 
 ```json
 { "id": "police", "label": "Polizia", "grades": [
@@ -44,7 +45,7 @@ La Currency di `salary` deve già esistere, altrimenti il file del Job viene sca
 | `/job set <player> <job> <grade>` | operatori | Assegna Job e Grade. Il Tab propone i Jobs esistenti e poi i Grades del Job scelto. |
 | `/job remove <player>` | operatori | Licenzia. |
 
-I sottocomandi per operatori non compaiono agli altri Players. Restano validi i comandi lunghi `/qrm job info`, `/qrm duty` e `/qrm admin job list|set|fire`.
+I sottocomandi per operatori non compaiono agli altri Players. `/qrm job` e `/qrm duty` hanno gli stessi sottocomandi di `/job` e `/duty`.
 
 ## Limitations
 

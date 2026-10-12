@@ -26,5 +26,6 @@ Questa pagina elenca cosa introduce ogni versione di QRM. Per i cambi di protoco
 | 0.15 | Module Locker (`qrm-locker`): un armadietto personale per Character nei punti di interazione di tipo `locker`. Nessuna modifica a Core e API. |
 | 0.17 | Organizations: `/org rename` cambia l'id, `/org delete` elimina un'Organization archiviata, vuota e a saldo zero. |
 | 0.18 | Organizations: `/org unarchive` riattiva un'Organization archiviata e scongela l'Account. |
+| 0.19 | Comandi coerenti: `/qrm <argomento>` ha gli stessi sottocomandi della forma breve (`/job`, `/org`, `/money`, `/perm`); `/qrm admin` tiene solo `audit`, `point`, `staff` e `log`. Ogni Job ha la sua Organization, creata all'avvio; `/org rename` è rimosso. |
 
 Per il significato delle etichette di stato vedi [Versioni e stabilità](stabilita.md).

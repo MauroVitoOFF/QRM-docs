@@ -33,7 +33,7 @@ Regole di risoluzione:
 | `/perm deny <player> <node>` | Nega il nodo. |
 | `/perm clear <player> <node>` | Rimuove l'override. |
 
-`<node>` può contenere il jolly (`police.*`). I comandi sono solo per operatori. Resta valida anche la forma `/qrm admin perm …`.
+`<node>` può contenere il jolly (`police.*`). I comandi sono solo per operatori. La forma lunga è `/qrm perm …`; `/qrm admin perm` non esiste più (0.19).
 
 ## Limitations
 
