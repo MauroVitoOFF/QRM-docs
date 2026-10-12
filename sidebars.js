@@ -16,6 +16,7 @@ module.exports = {
         'server-owner/personaggi',
         'server-owner/economia',
         'server-owner/lavori',
+        'server-owner/guida-creare-un-job',
         'server-owner/organizzazioni',
         'server-owner/punti-di-interazione',
         'server-owner/permessi',

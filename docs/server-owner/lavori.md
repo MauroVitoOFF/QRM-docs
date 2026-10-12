@@ -23,7 +23,7 @@ Un Character ha al massimo **un Job** con un **Grade**, e può essere **in servi
 
 ### Definire un Job
 
-Un file per Job in `<world>/qrm/data/jobs/<id>.json`. La chiave `"org"` delle versioni precedenti non serve più: se c'è, viene ignorata con un avviso nel log.
+Un file per Job in `<world>/qrm/data/jobs/<id>.json` (passo per passo: [Guida: creare un Job](guida-creare-un-job.md)). La chiave `"org"` delle versioni precedenti non serve più: se c'è, viene ignorata con un avviso nel log.
 
 ```json
 { "id": "police", "label": "Polizia", "grades": [
@@ -55,6 +55,7 @@ I sottocomandi per operatori non compaiono agli altri Players. `/qrm job` e `/qr
 
 ## Related
 
+- [Guida: creare un Job](guida-creare-un-job.md)
 - [Organizations](organizzazioni.md)
 - [Punti di interazione](punti-di-interazione.md)
 - [Permissions](permessi.md)
