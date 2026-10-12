@@ -27,5 +27,6 @@ Questa pagina elenca cosa introduce ogni versione di QRM. Per i cambi di protoco
 | 0.17 | Organizations: `/org rename` cambia l'id, `/org delete` elimina un'Organization archiviata, vuota e a saldo zero. |
 | 0.18 | Organizations: `/org unarchive` riattiva un'Organization archiviata e scongela l'Account. |
 | 0.19 | Comandi coerenti: `/qrm <argomento>` ha gli stessi sottocomandi della forma breve (`/job`, `/org`, `/money`, `/perm`); `/qrm admin` tiene solo `audit`, `point`, `staff` e `log`. Ogni Job ha la sua Organization, creata all'avvio; `/org rename` è rimosso. |
+| 0.20 | Module Boss (`qrm-boss`): menu del boss aziendale con Panoramica, Membri e Conto, da `/boss` e dalla scrivania `boss_desk`; i membri di un'azienda con Job si gestiscono tramite i Grades. |
 
 Per il significato delle etichette di stato vedi [Versioni e stabilità](stabilita.md).

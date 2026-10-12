@@ -42,6 +42,7 @@ module.exports = {
           link: { type: 'doc', id: 'modules/locker/index' },
           items: ['modules/locker/api'],
         },
+        { type: 'doc', id: 'modules/boss/index', label: 'Boss' },
       ],
     },
     {

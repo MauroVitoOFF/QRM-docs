@@ -14,8 +14,9 @@ Un Module è un mod a sé, con un proprio jar, un proprio `modId` e una propria 
 | --- | --- | --- | --- | --- |
 | [Bank](bank/index.md) | `qrm_bank` | 0.7 | Experimental | Account bancario per Character, ATM, contante fisico e bonifici. |
 | [Locker](locker/index.md) | `qrm_locker` | 0.15 | Experimental | Armadietto personale per Character nei punti di interazione di tipo `locker`. |
+| [Boss](boss/index.md) | `qrm_boss` | 0.19 | Experimental | Menu del boss aziendale: membri, gradi e conto, da `/boss` e dalla scrivania `boss_desk`. |
 
-I Modules ufficiali sono Bank e Locker. Per chi sviluppa sono anche il riferimento di Modules che dipendono solo da `qrm-api` e `qrm-client-api` ([Build del progetto](../sviluppatori/build.md)); Locker mostra in più come costruire una funzione sui [punti di interazione](../sviluppatori/servizi/punti.md).
+I Modules ufficiali sono Bank, Locker e Boss. Per chi sviluppa sono anche il riferimento di Modules che dipendono solo da `qrm-api` e `qrm-client-api` ([Build del progetto](../sviluppatori/build.md)); Locker mostra in più come costruire una funzione sui [punti di interazione](../sviluppatori/servizi/punti.md).
 
 ## How a Module section is organized
 
@@ -38,7 +39,7 @@ Un Module senza comandi o senza API pubblica non ha la pagina corrispondente.
 
 ## Limitations
 
-- Bank richiede il mod anche sui client; Locker no (vedi la pagina di ciascun Module).
+- Bank e Boss richiedono il mod anche sui client; Locker no (vedi la pagina di ciascun Module).
 - I Modules sono `0.x` come il resto di QRM: comandi, configurazione e API possono cambiare tra una minor e l'altra ([Versioni e stabilità](../intro/stabilita.md)).
 
 ## Related

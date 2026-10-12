@@ -36,6 +36,7 @@ Il protocollo di Bank è alla versione 2 dalla 0.9 (tessera Banca nel menu staff
 - **0.17:** `OrganizationService` ha due metodi in più, `rename` e `delete`, e `OrgError` due varianti, `NotArchived` e `NotEmpty`. Chi implementa `OrganizationService` o fa uno `switch` esaustivo su `OrgError` deve adeguarsi. Nessun cambio al protocollo né allo schema del database.
 - **0.18:** `OrganizationService.unarchive` e `OrganizationUnarchivedEvent` entrano in `qrm-api`. Chi implementa `OrganizationService` deve aggiungere il metodo. Nessun cambio al protocollo né allo schema del database.
 - **0.19:** nessun cambio a `qrm-api` né allo schema del database. Cambiano i comandi: `/qrm job|org|money|perm|duty|character` hanno gli stessi sottocomandi delle forme brevi, e spariscono `/qrm admin grant|take|job|org|perm` e `/org rename`. Il Core crea all'avvio l'Organization di ogni Job dei file (l'id è quello del Job) e la chiave `"org"` dei file JSON è ignorata.
+- **0.20:** nessun cambio a `qrm-api`, al protocollo di `qrm` né allo schema del database. Entra il Module `qrm_boss` (menu `/boss` e punto `boss_desk`), che non ha dati propri; con un Job collegato gestisce i membri tramite i Grades.
 
 ## Related
 
