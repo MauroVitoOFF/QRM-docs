@@ -1,22 +1,15 @@
-# QRM Docs
+# QRM Docs (ritirata)
 
-Documentazione di [QRM (Quorum)](https://maurovitooff.github.io/QRM-docs/), il framework per server roleplay su NeoForge. Sito [Docusaurus](https://docusaurus.io/), in italiano, con due percorsi: **server owner** e **sviluppatori**.
+La documentazione di QRM (Quorum) si è spostata nella repository del progetto:
 
-## Sviluppo
+- **Wiki**: <https://maurovitooff.github.io/Quorum/docs/>
+- **Sorgenti**: <https://github.com/MauroVitoOFF/Quorum/tree/main/website/src/content/docs/docs>
 
-Serve Node 20 o successivo.
+Questa repository non riceve più aggiornamenti. Il suo sito pubblica soltanto una pagina di rimando per ogni vecchio indirizzo, generata da `scripts/make-redirects.mjs`.
 
-```bash
-npm install
-npm start        # anteprima locale con ricarica
-npm run build    # build di produzione; un link rotto fa fallire il build
-```
+## La wiki precedente
 
-Le pagine sono in `docs/`, la sidebar in `sidebars.js`. Il sito si pubblica da solo su GitHub Pages a ogni push su `main`.
-
-## Contenuti di esempio
-
-`samples/qrm-sample-pack/` è un resource pack di esempio per cambiare i colori della GUI di QRM (vedi la pagina Temi).
+Le pagine della wiki precedente, fatte con Docusaurus, restano nella cronologia. Il tag `wiki-docusaurus` indica l'ultima versione completa, comprese le pagine per sviluppatori che la nuova wiki non ha.
 
 ## Licenza
 

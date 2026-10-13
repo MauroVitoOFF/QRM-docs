@@ -1,8 +1,8 @@
 name: docs
+# La wiki si è spostata nella repository Quorum. Qui resta solo una pagina di rimando per ogni vecchio indirizzo.
 on:
   push:
     branches: [main]
-  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -22,16 +22,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build
+      - run: node scripts/make-redirects.mjs
       - uses: actions/upload-pages-artifact@v3
-        if: github.event_name != 'pull_request'
         with:
-          path: build
+          path: site
 
   deploy:
-    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
